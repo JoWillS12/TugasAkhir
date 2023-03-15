@@ -10,14 +10,19 @@ import SwiftUI
 struct MenuPageView: View {
     var body: some View {
         TabView {
-            MainMenuView()
+            WorkoutMenuView()
                 .tabItem {
                     Label("Menu", systemImage: "list.clipboard")
                 }
             
-            FriendPageView()
+            BMIView()
                 .tabItem {
-                    Label("Friend", systemImage: "person.2")
+                    Label("BMI", systemImage: "scalemass")
+                }
+            
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person")
                 }
         }    }
 }

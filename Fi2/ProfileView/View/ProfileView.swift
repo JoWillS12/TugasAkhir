@@ -1,20 +1,20 @@
 //
-//  FriendPageView.swift
+//  ProfileView.swift
 //  Fi2
 //
-//  Created by Joseph William Santoso on 03/03/23.
+//  Created by Joseph William Santoso on 13/03/23.
 //
 
 import SwiftUI
 
-struct FriendPageView: View {
+struct ProfileView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct FriendPageView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendPageView()
+        ProfileView()
     }
 }
