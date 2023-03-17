@@ -27,16 +27,7 @@ struct BMIView: View {
                     
                     Group{
                         
-                        Picker("Choose your gender", selection: $BMI.gender)
-                        {
-                            ForEach(BMI.genders, id: \.self) {
-                                Text($0)
-                            }
-                        }.accentColor(Color.green)
-                            
-                        
-                        Spacer()
-                            .frame(height: geometry.size.height * 0.01)
+                       
                         
                         TextField("Your Height", value: $BMI.height, formatter: NumberFormatter())
                             .textFieldStyle(.roundedBorder)
@@ -71,6 +62,8 @@ struct BMIView: View {
                             .frame(height: geometry.size.height * 0.1)
                         
                         Text("Your BMI is \(BMI.result) and you are \(BMI.category)!")
+                            .font(.title3)
+                            .fontWeight(.bold)
                     }
                 }
             }

@@ -26,6 +26,7 @@
 		17DE28D329B5C92900F5C186 /* CustomWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE28D229B5C92900F5C186 /* CustomWorkoutView.swift */; };
 		17FAD86229BF05B20035AF33 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD86129BF05B20035AF33 /* ProfileView.swift */; };
 		17FAD86429BF089F0035AF33 /* BMIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD86329BF089F0035AF33 /* BMIViewModel.swift */; };
+		17FAD86629C43D0C0035AF33 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD86529C43D0C0035AF33 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		17DE28D229B5C92900F5C186 /* CustomWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWorkoutView.swift; sourceTree = "<group>"; };
 		17FAD86129BF05B20035AF33 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		17FAD86329BF089F0035AF33 /* BMIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewModel.swift; sourceTree = "<group>"; };
+		17FAD86529C43D0C0035AF33 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				17FAD86129BF05B20035AF33 /* ProfileView.swift */,
+				17FAD86529C43D0C0035AF33 /* ProfileViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				17DE28BE29B1D29100F5C186 /* MenuPageView.swift in Sources */,
 				17DE288429B1C6EB00F5C186 /* ContentView.swift in Sources */,
 				17DE28D129B5C91700F5C186 /* WorkoutMenuView.swift in Sources */,
+				17FAD86629C43D0C0035AF33 /* ProfileViewModel.swift in Sources */,
 				17DE288229B1C6EB00F5C186 /* Fi2App.swift in Sources */,
 				17FAD86229BF05B20035AF33 /* ProfileView.swift in Sources */,
 				17DE28D329B5C92900F5C186 /* CustomWorkoutView.swift in Sources */,
