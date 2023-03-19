@@ -7,14 +7,11 @@
 
 import SwiftUI
 
-struct ProfileViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+class ProfileViewModel: ObservableObject {
+    @Published var selectedMenu = "Add Friend"
+    @Published var friendName = ""
+    @Published var friendScore = ""
+    @Published var menu = ["Add Friend", "Friend List"]
 }
 
-struct ProfileViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileViewModel()
-    }
-}
+

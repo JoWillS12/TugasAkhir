@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var selectedMenu = "Add Friend"
-    @State private var friendName = ""
-    @State private var friendScore = ""
-    let menu = ["Add Friend", "Friend List"]
+    @ObservedObject var Profile = ProfileViewModel()
     
     var body: some View {
         GeometryReader{ geometry in
@@ -70,24 +67,24 @@ struct ProfileView: View {
                     Spacer()
                         .frame(height: geometry.size.height * 0.05)
                     
-                    Picker("Menu", selection: $selectedMenu) {
-                        ForEach(menu, id: \.self) { menuItem in
+                    Picker("Menu", selection: $Profile.selectedMenu) {
+                        ForEach(Profile.menu, id: \.self) { menuItem in
                             Text(menuItem)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
                     
-                    if selectedMenu == "Add Friend" {
+                    if Profile.selectedMenu == "Add Friend" {
                         VStack {
-                            TextField("Friend's Name", text: $friendName)
+                            TextField("Friend's Name", text: $Profile.friendName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding()
                             
                             Button(action: {
                                 // Perform the action here
-                                friendName = ""
-                                friendScore = ""
+                                Profile.friendName = ""
+                                Profile.friendScore = ""
                             }) {
                                 Text("Add Friend")
                                     .font(.headline)
@@ -98,7 +95,7 @@ struct ProfileView: View {
                                     .cornerRadius(15.0)
                             }
                         }
-                    } else if selectedMenu == "Friend List" {
+                    } else if Profile.selectedMenu == "Friend List" {
                         ScrollView{
                             VStack {
                                 ForEach(1...10, id: \.self) { index in
