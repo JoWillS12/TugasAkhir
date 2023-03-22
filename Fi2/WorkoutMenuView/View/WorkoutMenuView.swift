@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct WorkoutMenuView: View {
-    
-    let sub = ["Workout Suggestions for below 18.5 BMI", "Workout Suggestions for below 24.9 BMI", "Workout Suggestions for above 30 BMI"]
+    @ObservedObject var menu = WorkoutMenuViewModel()
     
     var body: some View {
         GeometryReader{ geometry in
@@ -43,7 +42,7 @@ struct WorkoutMenuView: View {
                     
                     ScrollView {
                         VStack(spacing: geometry.size.height * 0.023) {
-                            ForEach(sub.indices, id: \.self) { index in
+                            ForEach(menu.sub.indices, id: \.self) { index in
                                 VStack(spacing: 0) {
                                     Text("WORKOUT #\(index + 1)")
                                         .font(.title)
@@ -51,7 +50,7 @@ struct WorkoutMenuView: View {
                                         .foregroundColor(.white)
                                     Spacer()
                                         .frame(height: geometry.size.height * 0.035)
-                                    Text("\(sub[index])")
+                                    Text("\(menu.sub[index])")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                         .padding(.bottom)

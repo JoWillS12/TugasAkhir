@@ -24,7 +24,7 @@ struct EditProfileView: View {
                         .frame(width: geometry.size.width * 0.4)
                         .padding()
                     
-                    TextField("Name", text: $name)
+                    TextField("NickName", text: $name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     

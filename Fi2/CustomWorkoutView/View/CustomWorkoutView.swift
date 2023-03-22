@@ -8,60 +8,62 @@
 import SwiftUI
 
 struct CustomWorkoutView: View {
-    @StateObject var viewModel = CustomWorkoutViewModel()
+    @ObservedObject var custom = CustomWorkoutViewModel()
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Text("Choose a Workout")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 30)
-                
-                ScrollView {
-                    VStack {
-                        ForEach(viewModel.workouts) { workout in
-                            Button(action: {
-                                if viewModel.selectedWorkouts.contains(workout) {
-                                    viewModel.selectedWorkouts.remove(workout)
-                                } else {
-                                    viewModel.selectedWorkouts.insert(workout)
-                                }
-                            }, label: {
-                                HStack {
-                                    Image(workout.image)
-                                        .resizable()
-                                        .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
-                                    
-                                    Spacer()
-                                        .frame(width: geometry.size.width * 0.1)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(workout.name)
-                                            .font(.headline)
-                                        Text(workout.reps)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                        Text(workout.duration)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
+            ZStack {
+                VStack {
+                    Text("Choose Your Workout")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.top, 30)
+                    
+                    ScrollView {
+                        VStack {
+                            ForEach(custom.workouts) { workout in
+                                Button(action: {
+                                    if custom.selectedWorkouts.contains(workout) {
+                                        custom.selectedWorkouts.remove(workout)
+                                    } else {
+                                        custom.selectedWorkouts.insert(workout)
                                     }
-                                }
-                                .padding()
-                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.2)
-                                .background(viewModel.selectedWorkouts.contains(workout) ? Color.blue.opacity(0.3) : Color.white)
-                                .cornerRadius(20)
-                                .shadow(radius: 5)
-                            })
+                                }, label: {
+                                    HStack {
+                                        Image(workout.image)
+                                            .resizable()
+                                            .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
+                                        
+                                        Spacer()
+                                            .frame(width: geometry.size.width * 0.1)
+                                        
+                                        VStack(alignment: .leading) {
+                                            Text(workout.name)
+                                                .font(.headline)
+                                            Text(workout.reps)
+                                                .font(.subheadline)
+                                                .foregroundColor(.gray)
+                                            Text(workout.duration)
+                                                .font(.subheadline)
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding()
+                                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.2)
+                                    .background(custom.selectedWorkouts.contains(workout) ? Color.blue.opacity(0.3) : Color.white)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 5)
+                                })
+                            }
+                            .padding(.top, 20.0)
                         }
-                        .padding(.top, 20.0)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 50)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 50)
-                }
-                
-                if !viewModel.selectedWorkouts.isEmpty {
-                    WorkoutEditorView(selectedWorkouts: Array(viewModel.selectedWorkouts))
+                    
+                    if !custom.selectedWorkouts.isEmpty {
+                        WorkoutEditorView(selectedWorkouts: Array(custom.selectedWorkouts))
+                    }
                 }
             }
         }
