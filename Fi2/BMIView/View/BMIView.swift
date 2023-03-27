@@ -27,7 +27,7 @@ struct BMIView: View {
                     
                     Group{
                         
-                       
+                        
                         
                         TextField("Your Height", value: $BMI.height, formatter: NumberFormatter())
                             .textFieldStyle(.roundedBorder)

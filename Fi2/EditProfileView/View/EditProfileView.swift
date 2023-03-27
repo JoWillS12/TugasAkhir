@@ -60,6 +60,7 @@ struct EditProfileView: View {
             }
         }
         .navigationBarTitle("Edit Profile")
+        
     }
 }
 

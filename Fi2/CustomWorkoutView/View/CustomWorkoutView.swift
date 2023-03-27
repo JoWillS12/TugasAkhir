@@ -9,15 +9,16 @@ import SwiftUI
 
 struct CustomWorkoutView: View {
     @ObservedObject var custom = CustomWorkoutViewModel()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    Text("Choose Your Workout")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.top, 30)
+//                    Text("Choose Your Workout")
+//                        .font(.title)
+//                        .fontWeight(.bold)
+//                        .padding(.top, 30)
                     
                     ScrollView {
                         VStack {
@@ -59,12 +60,26 @@ struct CustomWorkoutView: View {
                         }
                         .padding(.horizontal, 20)
                         .padding(.bottom, 50)
+                        
                     }
                     
                     if !custom.selectedWorkouts.isEmpty {
                         WorkoutEditorView(selectedWorkouts: Array(custom.selectedWorkouts))
                     }
                 }
+                .navigationBarTitle("Choose Your Workout")
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(
+                    leading: Button(action: {
+                        // Action to perform when the back button is tapped
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.blue)
+                            .font(.title)
+                    }
+                )
+                .edgesIgnoringSafeArea(.bottom)
             }
         }
     }
