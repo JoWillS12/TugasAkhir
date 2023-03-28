@@ -8,25 +8,23 @@
 import SwiftUI
 
 class BMIViewModel: ObservableObject {
-    @Published var gender = ""
-    @Published var genders = ["Male", "Female"]
-    @Published var age: Int = 0
+
     @Published var height: Double = 0.0
     @Published var weight: Double = 0.0
     @Published var result: Double = 0.0
     @Published var category = ""
-    @Published var skinny: [Double] = []
+
     
     func bmi(){
         result = weight / (height/100 * height/100)
         if result > 0.0 && result < 18.5{
-            category = "Too skinny"
+            category = "Underweight"
         }
         if result >= 18.5 && result <= 24.9 {
             category = "Normal"
         }
         if result >= 25.0 && result <= 29.9 {
-            category = "Too much"
+            category = "Overweight"
         }
         if result >= 30 {
             category = "Obese"

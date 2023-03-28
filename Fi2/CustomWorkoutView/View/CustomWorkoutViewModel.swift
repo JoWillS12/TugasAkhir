@@ -10,7 +10,7 @@ import SwiftUI
 
 class CustomWorkoutViewModel: ObservableObject {
     @Published var workouts = [
-        CustomWorkout(name: "Pushups", image: "pushups", reps: "3 sets of 10", duration: "5 minutes"),
+        CustomWorkout(name: "Chest and front of shoulder stretch ", image: "pushups", reps: "3 sets of 10", duration: "5 minutes"),
         CustomWorkout(name: "Squats", image: "squats", reps: "3 sets of 10", duration: "5 minutes"),
         CustomWorkout(name: "Lunges", image: "lunges", reps: "3 sets of 10", duration: "5 minutes"),
         CustomWorkout(name: "Crunches", image: "crunches", reps: "3 sets of 10", duration: "5 minutes")

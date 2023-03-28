@@ -17,6 +17,7 @@ struct WorkoutEditorView: View {
         VStack {
             Text("Workout Editor")
                 .font(.title)
+                .fontWeight(.bold)
                 .padding(.top, 30)
             TextField("Title", text: $title)
                 .padding()
@@ -36,6 +37,7 @@ struct WorkoutEditorView: View {
             
             HStack {
                 Spacer()
+                    .frame(width: 20)
                 Button(action: {}, label: {
                     Text("Save")
                         .foregroundColor(.white)

@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+
+
 struct BMIView: View {
     @ObservedObject var BMI = BMIViewModel()
+    @State var showPopUp = false
     
     var body: some View {
         GeometryReader{ geometry in
@@ -45,7 +48,13 @@ struct BMIView: View {
                         Spacer()
                             .frame(height: geometry.size.height * 0.05)
                         
-                        Button(action:{self.BMI.bmi()} , label: {
+                        Button(action:{
+                            BMI.bmi()
+                            withAnimation(.linear(duration: 0.3)) {
+                                showPopUp.toggle()
+                            }
+                            
+                        } , label: {
                             VStack(spacing: 4) {
                                 Text("Calculate")
                                     .font(.title2)
@@ -61,12 +70,20 @@ struct BMIView: View {
                         Spacer()
                             .frame(height: geometry.size.height * 0.1)
                         
-                        Text("Your BMI is \(BMI.result) and you are \(BMI.category)!")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        //                        Text("Your BMI is \(BMI.result) and you are \(BMI.category)!")
+                        //                            .font(.title3)
+                        //                            .fontWeight(.bold)
                     }
+                    
+                    Rectangle()
+                        .fill(.white)
                 }
+                
             }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            ResultPopUpView(title: "Your Result", message: "\(BMI.result.rounded()) and you are \(BMI.category)!", buttonBack: "Back", show: $showPopUp)
         }
     }
 }
@@ -76,3 +93,4 @@ struct BMIView_Previews: PreviewProvider {
         BMIView()
     }
 }
+
