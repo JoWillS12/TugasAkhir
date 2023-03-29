@@ -38,6 +38,19 @@
 		17FAD87F29CAEF790035AF33 /* WorkoutMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD87E29CAEF790035AF33 /* WorkoutMenuViewModel.swift */; };
 		17FAD88129D1EB500035AF33 /* ResultPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD88029D1EB500035AF33 /* ResultPopUpView.swift */; };
 		17FAD88429D2025E0035AF33 /* KeypadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD88329D2025E0035AF33 /* KeypadExtension.swift */; };
+		17FAD88629D2F9200035AF33 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD88529D2F9200035AF33 /* FirebaseFirestore */; };
+		17FAD88829D2F9270035AF33 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD88729D2F9270035AF33 /* FirebaseFirestoreSwift */; };
+		17FAD88B29D43A220035AF33 /* WorkoutTestContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD88A29D43A220035AF33 /* WorkoutTestContent.swift */; };
+		17FAD88D29D43A6A0035AF33 /* WorkoutTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD88C29D43A6A0035AF33 /* WorkoutTestModel.swift */; };
+		17FAD88F29D43A970035AF33 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD88E29D43A970035AF33 /* FirebaseDatabase */; };
+		17FAD89129D43A9C0035AF33 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD89029D43A9C0035AF33 /* FirebaseDatabaseSwift */; };
+		17FAD89329D43C100035AF33 /* WorkoutTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89229D43C100035AF33 /* WorkoutTestView.swift */; };
+		17FAD89529D43C500035AF33 /* WorkoutTestEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89429D43C500035AF33 /* WorkoutTestEditorView.swift */; };
+		17FAD89829D455CE0035AF33 /* WorkoutDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89729D455CE0035AF33 /* WorkoutDataView.swift */; };
+		17FAD89A29D457F30035AF33 /* DataTitleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89929D457F30035AF33 /* DataTitleContent.swift */; };
+		17FAD89C29D461170035AF33 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89B29D461170035AF33 /* GifImage.swift */; };
+		17FAD89F29D463560035AF33 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD89E29D463560035AF33 /* FLAnimatedImage */; };
+		17FAD8A129D469310035AF33 /* GifImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD8A029D469310035AF33 /* GifImageContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +102,14 @@
 		17FAD87E29CAEF790035AF33 /* WorkoutMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMenuViewModel.swift; sourceTree = "<group>"; };
 		17FAD88029D1EB500035AF33 /* ResultPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPopUpView.swift; sourceTree = "<group>"; };
 		17FAD88329D2025E0035AF33 /* KeypadExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadExtension.swift; sourceTree = "<group>"; };
+		17FAD88A29D43A220035AF33 /* WorkoutTestContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTestContent.swift; sourceTree = "<group>"; };
+		17FAD88C29D43A6A0035AF33 /* WorkoutTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTestModel.swift; sourceTree = "<group>"; };
+		17FAD89229D43C100035AF33 /* WorkoutTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTestView.swift; sourceTree = "<group>"; };
+		17FAD89429D43C500035AF33 /* WorkoutTestEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTestEditorView.swift; sourceTree = "<group>"; };
+		17FAD89729D455CE0035AF33 /* WorkoutDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDataView.swift; sourceTree = "<group>"; };
+		17FAD89929D457F30035AF33 /* DataTitleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTitleContent.swift; sourceTree = "<group>"; };
+		17FAD89B29D461170035AF33 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
+		17FAD8A029D469310035AF33 /* GifImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +117,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FAD89129D43A9C0035AF33 /* FirebaseDatabaseSwift in Frameworks */,
+				17FAD88F29D43A970035AF33 /* FirebaseDatabase in Frameworks */,
+				17FAD88829D2F9270035AF33 /* FirebaseFirestoreSwift in Frameworks */,
 				17DE28B129B1C9F500F5C186 /* FirebaseAnalyticsSwift in Frameworks */,
+				17FAD88629D2F9200035AF33 /* FirebaseFirestore in Frameworks */,
 				17DE28B729B1CD0D00F5C186 /* FirebaseAuth in Frameworks */,
 				17DE28AF29B1C9F500F5C186 /* FirebaseAnalytics in Frameworks */,
+				17FAD89F29D463560035AF33 /* FLAnimatedImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +169,7 @@
 		17DE288029B1C6EB00F5C186 /* Fi2 */ = {
 			isa = PBXGroup;
 			children = (
+				17FAD88929D439FC0035AF33 /* FirebaseTest */,
 				17FAD88229D202420035AF33 /* Extension */,
 				17FAD87829C757C30035AF33 /* WorkoutStartView */,
 				17FAD87429C757810035AF33 /* WorkoutDetailView */,
@@ -246,6 +273,7 @@
 		17DE28C929B5C8C500F5C186 /* CustomWorkoutView */ = {
 			isa = PBXGroup;
 			children = (
+				17FAD89629D4559B0035AF33 /* Components */,
 				17FAD86F29C74CB40035AF33 /* Model */,
 				17DE28CD29B5C8F800F5C186 /* View */,
 			);
@@ -319,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				17FAD87029C74CEB0035AF33 /* CustomWorkoutContent.swift */,
+				17FAD89929D457F30035AF33 /* DataTitleContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,8 +389,29 @@
 			isa = PBXGroup;
 			children = (
 				17FAD88329D2025E0035AF33 /* KeypadExtension.swift */,
+				17FAD89B29D461170035AF33 /* GifImage.swift */,
+				17FAD8A029D469310035AF33 /* GifImageContent.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		17FAD88929D439FC0035AF33 /* FirebaseTest */ = {
+			isa = PBXGroup;
+			children = (
+				17FAD88A29D43A220035AF33 /* WorkoutTestContent.swift */,
+				17FAD88C29D43A6A0035AF33 /* WorkoutTestModel.swift */,
+				17FAD89229D43C100035AF33 /* WorkoutTestView.swift */,
+				17FAD89429D43C500035AF33 /* WorkoutTestEditorView.swift */,
+			);
+			path = FirebaseTest;
+			sourceTree = "<group>";
+		};
+		17FAD89629D4559B0035AF33 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				17FAD89729D455CE0035AF33 /* WorkoutDataView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +434,11 @@
 				17DE28AE29B1C9F500F5C186 /* FirebaseAnalytics */,
 				17DE28B029B1C9F500F5C186 /* FirebaseAnalyticsSwift */,
 				17DE28B629B1CD0D00F5C186 /* FirebaseAuth */,
+				17FAD88529D2F9200035AF33 /* FirebaseFirestore */,
+				17FAD88729D2F9270035AF33 /* FirebaseFirestoreSwift */,
+				17FAD88E29D43A970035AF33 /* FirebaseDatabase */,
+				17FAD89029D43A9C0035AF33 /* FirebaseDatabaseSwift */,
+				17FAD89E29D463560035AF33 /* FLAnimatedImage */,
 			);
 			productName = Fi2;
 			productReference = 17DE287E29B1C6EB00F5C186 /* Fi2.app */;
@@ -459,6 +514,7 @@
 			mainGroup = 17DE287529B1C6EB00F5C186;
 			packageReferences = (
 				17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				17FAD89D29D463560035AF33 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 			);
 			productRefGroup = 17DE287F29B1C6EB00F5C186 /* Products */;
 			projectDirPath = "";
@@ -503,24 +559,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FAD89A29D457F30035AF33 /* DataTitleContent.swift in Sources */,
 				17DE28BA29B1CFD200F5C186 /* LoginViewModel.swift in Sources */,
 				17FAD87F29CAEF790035AF33 /* WorkoutMenuViewModel.swift in Sources */,
 				17FAD87B29C757F80035AF33 /* WorkoutStartView.swift in Sources */,
 				17FAD87129C74CEB0035AF33 /* CustomWorkoutContent.swift in Sources */,
 				17FAD87729C757AA0035AF33 /* WorkoutDetailView.swift in Sources */,
+				17FAD8A129D469310035AF33 /* GifImageContent.swift in Sources */,
+				17FAD88D29D43A6A0035AF33 /* WorkoutTestModel.swift in Sources */,
 				17FAD87D29CAEDD30035AF33 /* WorkoutDetailViewModel.swift in Sources */,
 				17FAD86C29C601B30035AF33 /* EditProfileViewModel.swift in Sources */,
+				17FAD89C29D461170035AF33 /* GifImage.swift in Sources */,
 				17FAD88129D1EB500035AF33 /* ResultPopUpView.swift in Sources */,
 				17DE28B429B1CBFD00F5C186 /* LoginView.swift in Sources */,
 				17DE28CF29B5C90C00F5C186 /* BMIView.swift in Sources */,
+				17FAD89829D455CE0035AF33 /* WorkoutDataView.swift in Sources */,
 				17FAD86429BF089F0035AF33 /* BMIViewModel.swift in Sources */,
 				17DE28BE29B1D29100F5C186 /* MenuPageView.swift in Sources */,
 				17DE288429B1C6EB00F5C186 /* ContentView.swift in Sources */,
 				17FAD86E29C74B7D0035AF33 /* CustomWorkoutViewModel.swift in Sources */,
 				17FAD86A29C5EFC00035AF33 /* EditProfileView.swift in Sources */,
+				17FAD89329D43C100035AF33 /* WorkoutTestView.swift in Sources */,
 				17DE28D129B5C91700F5C186 /* WorkoutMenuView.swift in Sources */,
 				17FAD86629C43D0C0035AF33 /* ProfileViewModel.swift in Sources */,
+				17FAD89529D43C500035AF33 /* WorkoutTestEditorView.swift in Sources */,
 				17DE288229B1C6EB00F5C186 /* Fi2App.swift in Sources */,
+				17FAD88B29D43A220035AF33 /* WorkoutTestContent.swift in Sources */,
 				17FAD86229BF05B20035AF33 /* ProfileView.swift in Sources */,
 				17FAD88429D2025E0035AF33 /* KeypadExtension.swift in Sources */,
 				17DE28D329B5C92900F5C186 /* CustomWorkoutView.swift in Sources */,
@@ -859,6 +923,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		17FAD89D29D463560035AF33 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Flipboard/FLAnimatedImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -876,6 +948,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		17FAD88529D2F9200035AF33 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		17FAD88729D2F9270035AF33 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		17FAD88E29D43A970035AF33 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		17FAD89029D43A9C0035AF33 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		17FAD89E29D463560035AF33 /* FLAnimatedImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17FAD89D29D463560035AF33 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */;
+			productName = FLAnimatedImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,19 +7,17 @@
 
 import Foundation
 
-struct CustomWorkout: Identifiable, Hashable {
-    let id = UUID()
-    let name: String
-    let image: String
+struct CustomWorkout: Identifiable, Codable, Hashable {
+    var id: String
+    var name: String
+    var image: String
     let reps: String
-    let duration: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
     
-    static func ==(lhs: CustomWorkout, rhs: CustomWorkout) -> Bool {
+    static func == (lhs: CustomWorkout, rhs: CustomWorkout) -> Bool {
         return lhs.id == rhs.id
     }
 }
-

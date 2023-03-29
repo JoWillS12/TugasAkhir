@@ -15,52 +15,33 @@ struct CustomWorkoutView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-//                    Text("Choose Your Workout")
-//                        .font(.title)
-//                        .fontWeight(.bold)
-//                        .padding(.top, 30)
-                    
                     ScrollView {
-                        VStack {
-                            ForEach(custom.workouts) { workout in
-                                Button(action: {
-                                    if custom.selectedWorkouts.contains(workout) {
-                                        custom.selectedWorkouts.remove(workout)
-                                    } else {
-                                        custom.selectedWorkouts.insert(workout)
-                                    }
-                                }, label: {
-                                    HStack {
-                                        Image(workout.image)
-                                            .resizable()
-                                            .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
-                                        
-                                        Spacer()
-                                            .frame(width: geometry.size.width * 0.1)
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text(workout.name)
-                                                .font(.headline)
-                                            Text(workout.reps)
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
-                                            Text(workout.duration)
-                                                .font(.subheadline)
-                                                .foregroundColor(.gray)
+                        VStack(spacing: 20) {
+                            ForEach(Array(custom.workouts.enumerated()), id: \.1.id) { index, workout in
+                                if index % 10 == 0 {
+                                    Text(custom.getSectionTitle(index: index))
+                                        .font(.headline)
+                                        .padding(.top, 20)
+                                    
+                                    Divider()
+                                }
+                                
+                                WorkoutDataView(
+                                    workout: workout,
+                                    selected: custom.selectedWorkouts.contains(workout),
+                                    onSelect: {
+                                        if custom.selectedWorkouts.contains(workout) {
+                                            custom.selectedWorkouts.remove(workout)
+                                        } else {
+                                            custom.selectedWorkouts.insert(workout)
                                         }
                                     }
-                                    .padding()
-                                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.2)
-                                    .background(custom.selectedWorkouts.contains(workout) ? Color.blue.opacity(0.3) : Color.white)
-                                    .cornerRadius(20)
-                                    .shadow(radius: 5)
-                                })
+                                )
+                                .padding(.bottom, 90)
                             }
-                            .padding(.top, 20.0)
                         }
                         .padding(.horizontal, 20)
                         .padding(.bottom, 50)
-                        
                     }
                     
                     if !custom.selectedWorkouts.isEmpty {
@@ -80,6 +61,12 @@ struct CustomWorkoutView: View {
                     }
                 )
                 .edgesIgnoringSafeArea(.bottom)
+                .onAppear {
+                    custom.listentoRealtimeDatabase()
+                }
+                .onDisappear {
+                    custom.stopListening()
+                }
             }
         }
     }
