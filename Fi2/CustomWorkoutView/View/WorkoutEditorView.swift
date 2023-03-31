@@ -10,8 +10,8 @@ import SwiftUI
 struct WorkoutEditorView: View {
     
     let selectedWorkouts: [CustomWorkout]
+    @ObservedObject var custom = CustomWorkoutViewModel()
     
-    @State private var title = ""
     
     var body: some View {
         VStack {
@@ -19,7 +19,7 @@ struct WorkoutEditorView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top, 30)
-            TextField("Title", text: $title)
+            TextField("Title", text: $custom.title)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
@@ -38,7 +38,9 @@ struct WorkoutEditorView: View {
             HStack {
                 Spacer()
                     .frame(width: 20)
-                Button(action: {}, label: {
+                Button(action: {
+                    custom.save()
+                }, label: {
                     Text("Save")
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)

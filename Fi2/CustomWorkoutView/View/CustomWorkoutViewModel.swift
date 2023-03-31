@@ -12,6 +12,8 @@ final class CustomWorkoutViewModel: ObservableObject {
     @Published var workouts: [CustomWorkout] = []
     @Published var selectedWorkouts = Set<CustomWorkout>()
     @Published var categories = ["ARMS", "BACK", "CHEST", "LEGS", "WAIST"]
+    @Published var title = ""
+    @Published var savedWorkouts: [SavedWorkout] = []
     
     private lazy var databasePath: DatabaseReference? = {
         let ref = Database.database().reference().child("exercises")
@@ -50,11 +52,53 @@ final class CustomWorkoutViewModel: ObservableObject {
     
     func getSectionTitle(index: Int) -> String {
         let sectionNumber = index / 10
-//        let categories = ["ARMS", "LEGS", "BACK", "WAIST", "CHEST"]
+        //        let categories = ["ARMS", "LEGS", "BACK", "WAIST", "CHEST"]
         if sectionNumber < categories.count {
             return categories[sectionNumber]
         } else {
             return ""
         }
     }
+    
+    func save() {
+        // Check if title and selectedWorkouts are not empty
+        guard !title.isEmpty, !selectedWorkouts.isEmpty else {
+            return
+        }
+        
+        // Convert selectedWorkouts to Data using JSONEncoder
+        guard let data = try? JSONEncoder().encode(selectedWorkouts) else {
+            return
+        }
+        
+        // Create a new SavedWorkout object
+        let savedWorkout = SavedWorkout(title: title, workouts: Array(selectedWorkouts))
+        
+        // Convert savedWorkout to Data using JSONEncoder
+        guard let savedWorkoutData = try? JSONEncoder().encode(savedWorkout) else {
+            return
+        }
+        
+        // Save the data and title to Firebase
+        guard let databasePath = databasePath else {
+            return
+        }
+        
+        let workoutData = [
+            "title": title,
+            "workouts": data.base64EncodedString(),
+            "savedWorkout": savedWorkoutData.base64EncodedString()
+        ]
+        
+        databasePath.childByAutoId().setValue(workoutData) { (error, _) in
+            if let error = error {
+                print("Error saving data: \(error.localizedDescription)")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
+    
+    
+    
 }

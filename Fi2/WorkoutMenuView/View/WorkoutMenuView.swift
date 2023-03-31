@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct WorkoutMenuView: View {
-    @ObservedObject var menu = WorkoutMenuViewModel()
+//    @ObservedObject var menu = WorkoutMenuViewModel()
+    @State var workoutTitles: [String] = []
     
     var body: some View {
         NavigationView {
@@ -39,7 +40,7 @@ struct WorkoutMenuView: View {
                         //                            )
                         //                    }
                         
-                        NavigationLink(destination: CustomWorkoutView()) {
+                        NavigationLink(destination: CustomWorkoutView(workoutTitles: $workoutTitles)) {
                             Text("Add Custom Workout")
                                 .font(.headline)
                                 .foregroundColor(.white)
@@ -55,23 +56,8 @@ struct WorkoutMenuView: View {
                         
                         ScrollView {
                             VStack(spacing: geometry.size.height * 0.023) {
-                                ForEach(menu.sub.indices, id: \.self) { index in
-                                    VStack(spacing: 0) {
-                                        Text("WORKOUT #\(index + 1)")
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.white)
-                                        Spacer()
-                                            .frame(height: geometry.size.height * 0.035)
-                                        Text("\(menu.sub[index])")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                            .padding(.bottom)
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.gray)
-                                    .cornerRadius(15.0)
+                                ForEach(workoutTitles, id: \.self) { title in
+                                    Text(title)
                                 }
                             }
                             .padding(.horizontal)
