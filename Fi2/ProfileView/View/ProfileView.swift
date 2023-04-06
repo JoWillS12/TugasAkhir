@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @ObservedObject var Profile = ProfileViewModel()
+    @ObservedObject var profile = ProfileViewModel()
     
     var body: some View {
         NavigationView {
@@ -45,7 +45,7 @@ struct ProfileView: View {
                                     .fontWeight(.bold)
                                 
                                 
-                                NavigationLink(destination: EditProfileView()){
+                                NavigationLink(destination: EditProfileView(profile: profile)) {
                                     Text("Edit Profile")
                                         .font(.headline)
                                         .foregroundColor(.white)
@@ -55,7 +55,8 @@ struct ProfileView: View {
                                                 .stroke(Color.white, lineWidth: 2)
                                         )
                                 }
-                                
+
+
                             }
                             //                        Spacer() // Use a Spacer only where necessary
                         }
@@ -66,24 +67,24 @@ struct ProfileView: View {
                         Spacer()
                             .frame(height: geometry.size.height * 0.05)
                         
-                        Picker("Menu", selection: $Profile.selectedMenu) {
-                            ForEach(Profile.menu, id: \.self) { menuItem in
+                        Picker("Menu", selection: $profile.selectedMenu) {
+                            ForEach(profile.menu, id: \.self) { menuItem in
                                 Text(menuItem)
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .padding(.horizontal)
                         
-                        if Profile.selectedMenu == "Add Friend" {
+                        if profile.selectedMenu == "Add Friend" {
                             VStack {
-                                TextField("Friend's Name", text: $Profile.friendName)
+                                TextField("Friend's Name", text: $profile.friendName)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding()
                                 
                                 Button(action: {
                                     // Perform the action here
-                                    Profile.friendName = ""
-                                    Profile.friendScore = ""
+                                    profile.friendName = ""
+                                    profile.friendScore = ""
                                 }) {
                                     Text("Add Friend")
                                         .font(.headline)
@@ -94,7 +95,7 @@ struct ProfileView: View {
                                         .cornerRadius(15.0)
                                 }
                             }
-                        } else if Profile.selectedMenu == "Friend List" {
+                        } else if profile.selectedMenu == "Friend List" {
                             ScrollView{
                                 VStack {
                                     ForEach(1...10, id: \.self) { index in

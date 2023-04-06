@@ -8,28 +8,30 @@
 import SwiftUI
 import FirebaseAuth
 
-struct LoginView: View{
-    @ObservedObject var Login = LoginViewModel()
+struct LoginView: View {
+    @ObservedObject var login = LoginViewModel()
+    @State var navigateToWorkoutMenu = false
     
-    var body: some View{
+    var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                Picker("", selection: $Login.isLogin) {
+                Picker("", selection: $login.isLogin) {
                     Text("Log In")
                         .tag(true)
                     Text("Create Account")
                         .tag(false)
-                }.pickerStyle(SegmentedPickerStyle())
-                    .padding()
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
                 
-                TextField("Email", text: $Login.email)
+                TextField("Email", text: $login.email)
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 280, height: 45, alignment: .center)
                 
-                SecureField("Password", text: $Login.password)
+                SecureField("Password", text: $login.password)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 280, height: 45, alignment: .center)
                 
@@ -37,25 +39,36 @@ struct LoginView: View{
                 
                 Button(action: {
                     // TODO
+                    if login.isLogin {
+                        login.loginUser()
+                    } else {
+                        login.createUser()
+                    }
+                    navigateToWorkoutMenu = true
                 }, label: {
-                    Text(Login.isLogin ? "Log In" : "Create Account")
+                    Text(login.isLogin ? "Log In" : "Create Account")
                         .foregroundColor(.white)
-                }).frame(width: 280, height: 45, alignment: .center)
-                    .background(Color.blue)
-                    .cornerRadius(8)
-            }.navigationTitle(Login.isLogin ? "Welcome Back" : "Welcome")
+                })
+                .frame(width: 280, height: 45, alignment: .center)
+                .background(Color.blue)
+                .cornerRadius(8)
+                
+                
+            }
+            .navigationTitle(login.isLogin ? "Welcome Back" : "Welcome")
+            .sheet(isPresented: $navigateToWorkoutMenu) {
+                WorkoutMenuView()
+            }
         }
     }
-    
 }
-
-
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
 }
+
 
 
 

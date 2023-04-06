@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseFirestore
 
 struct EditProfileView: View {
-    @State private var name = ""
-    @State private var age = ""
-    @State private var gender = ""
-    @State private var email = ""
-    @State private var password = ""
+    @State var name = ""
+    @State var age = ""
+    @State var gender = ""
+    @ObservedObject var profile: ProfileViewModel
+    @State private var email: String
+    
+    init(profile: ProfileViewModel) {
+        self._profile = ObservedObject(wrappedValue: profile)
+        self._email = State(initialValue: profile.email)
+    }
     
     var body: some View {
         GeometryReader{ geometry in
@@ -37,16 +44,27 @@ struct EditProfileView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     
-                    TextField("Email", text: $email)
+                    TextField("Email", text: $profile.email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                    
-                    SecureField("Password", text: $password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .disabled(true)
                     
                     Button(action: {
                         // Update profile logic
+                        let db = Firestore.firestore()
+                        let userRef = db.collection("users").document(profile.email)
+                        userRef.updateData([
+                            "name": name,
+                            "age": age,
+                            "gender": gender
+                        ]) { error in
+                            if let error = error {
+                                print("Error updating document: \(error)")
+                            } else {
+                                print("Document successfully updated")
+                                // You may want to show an alert or navigate back to the previous view here
+                            }
+                        }
                     }, label: {
                         Text("Save Changes")
                             .padding(.horizontal, 40)
@@ -60,14 +78,17 @@ struct EditProfileView: View {
             }
         }
         .navigationBarTitle("Edit Profile")
-        
+        .onAppear {
+            self.email = email
+        }
     }
 }
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            EditProfileView()
+            EditProfileView(profile: ProfileViewModel())
         }
     }
 }
+
