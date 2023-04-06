@@ -10,8 +10,10 @@ import Foundation
 struct CustomWorkout: Identifiable, Codable, Hashable {
     var id: String
     var name: String
+    var bodypart: String
     var image: String
     let reps: String
+//    var category: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

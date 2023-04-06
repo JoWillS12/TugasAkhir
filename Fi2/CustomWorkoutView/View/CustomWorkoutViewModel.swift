@@ -10,7 +10,7 @@ import FirebaseDatabase
 
 final class CustomWorkoutViewModel: ObservableObject {
     @Published var workouts: [CustomWorkout] = []
-    @Published var selectedWorkouts = Set<CustomWorkout>()
+    @Published var selectedWorkouts: Set<CustomWorkout> = []
     @Published var categories = ["ARMS", "BACK", "CHEST", "LEGS", "WAIST"]
     @Published var title = ""
     @Published var savedWorkouts: [SavedWorkout] = []
@@ -22,6 +22,18 @@ final class CustomWorkoutViewModel: ObservableObject {
     
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    
+    
+    @Published var selectedCategoryIndex = 0
+    
+    var filteredWorkouts: [CustomWorkout] {
+        if selectedCategoryIndex == 0 {
+            return workouts
+        } else {
+            let selectedCategory = categories[selectedCategoryIndex - 1]
+            return workouts.filter { $0.bodypart == selectedCategory }
+        }
+    }
     
     func listentoRealtimeDatabase() {
         guard let databasePath = databasePath else {

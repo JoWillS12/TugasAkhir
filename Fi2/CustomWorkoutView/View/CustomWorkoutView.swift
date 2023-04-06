@@ -16,9 +16,20 @@ struct CustomWorkoutView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
+                    Picker("Category", selection: $custom.selectedCategoryIndex) {
+                        Text("All").tag(0)
+                        ForEach(custom.categories.indices, id: \.self) { index in
+                            Text(custom.categories[index]).tag(index + 1)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+                    
                     ScrollView {
+                        
                         VStack(spacing: 20) {
-                            ForEach(Array(custom.workouts.enumerated()), id: \.1.id) { index, workout in
+                            ForEach(Array(custom.filteredWorkouts.enumerated()), id: \.1.id) { index, workout in
                                 if index % 10 == 0 {
                                     Text(custom.getSectionTitle(index: index))
                                         .font(.headline)

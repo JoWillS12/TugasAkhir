@@ -26,15 +26,6 @@ struct WorkoutEditorView: View {
                 .shadow(radius: 5)
                 .padding(.horizontal, 20)
             
-            ForEach(selectedWorkouts) { workout in
-                HStack {
-                    Text("Name: \(workout.name)")
-                    Spacer()
-                    Text("Reps: \(workout.reps)")
-                }
-                .padding(.horizontal, 20)
-            }
-            
             HStack {
                 Spacer()
                     .frame(width: 20)
@@ -50,6 +41,18 @@ struct WorkoutEditorView: View {
                 })
                 .padding(.horizontal, 20)
             }
+            ScrollView{
+                
+                ForEach(selectedWorkouts) { workout in
+                    HStack {
+                        Text("Name: \(workout.name)")
+                        Spacer()
+                        Text("Reps: \(workout.reps)")
+                    }
+                    .padding(.horizontal, 20)
+                }
+            }
+            
             
             Spacer()
         }
