@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var profile = ProfileViewModel()
+    @ObservedObject var login = LoginViewModel()
     
     var body: some View {
         NavigationView {
@@ -127,6 +128,7 @@ struct ProfileView: View {
         }
         
     }
+    
 }
 
 

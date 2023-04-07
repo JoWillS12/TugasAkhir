@@ -11,7 +11,8 @@ struct WorkoutEditorView: View {
     
     let selectedWorkouts: [CustomWorkout]
     @ObservedObject var custom = CustomWorkoutViewModel()
-    
+    let onSave: (String) -> Void
+    @State private var workoutTitle: String = ""
     
     var body: some View {
         VStack {
@@ -30,7 +31,7 @@ struct WorkoutEditorView: View {
                 Spacer()
                     .frame(width: 20)
                 Button(action: {
-                    custom.save()
+                    onSave(workoutTitle)
                 }, label: {
                     Text("Save")
                         .foregroundColor(.white)

@@ -22,7 +22,7 @@ final class CustomWorkoutViewModel: ObservableObject {
     
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
-    
+    let databaseRef = Database.database().reference()
     
     @Published var selectedCategoryIndex = 0
     
@@ -72,45 +72,18 @@ final class CustomWorkoutViewModel: ObservableObject {
         }
     }
     
-    func save() {
-        // Check if title and selectedWorkouts are not empty
-        guard !title.isEmpty, !selectedWorkouts.isEmpty else {
-            return
-        }
-        
-        // Convert selectedWorkouts to Data using JSONEncoder
-        guard let data = try? JSONEncoder().encode(selectedWorkouts) else {
-            return
-        }
-        
-        // Create a new SavedWorkout object
-        let savedWorkout = SavedWorkout(title: title, workouts: Array(selectedWorkouts))
-        
-        // Convert savedWorkout to Data using JSONEncoder
-        guard let savedWorkoutData = try? JSONEncoder().encode(savedWorkout) else {
-            return
-        }
-        
-        // Save the data and title to Firebase
-        guard let databasePath = databasePath else {
-            return
-        }
-        
-        let workoutData = [
-            "title": title,
-            "workouts": data.base64EncodedString(),
-            "savedWorkout": savedWorkoutData.base64EncodedString()
-        ]
-        
-        databasePath.childByAutoId().setValue(workoutData) { (error, _) in
-            if let error = error {
-                print("Error saving data: \(error.localizedDescription)")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
+//    func saveSelectedWorkout(withTitle title: String) {
+//        let selectedWorkoutsData = try! encoder.encode(Array(selectedWorkouts))
+//        let selectedWorkoutsString = String(data: selectedWorkoutsData, encoding: .utf8)!
+//        let workoutData: [String: Any] = ["title": title, "workouts": selectedWorkoutsString]
+//        databasePath?.child("saved_workouts").childByAutoId().setValue(workoutData)
+//        selectedWorkouts = []
+//    }
+    
+    func saveWorkoutToDatabase(_ title: String, _ workouts: [CustomWorkout]) {
+        let ref = Database.database().reference(withPath: "savedWorkouts/\(UUID().uuidString)")
+        let savedWorkout = SavedWorkout(title: title, workouts: workouts)
+        ref.setValue(savedWorkout.toAnyObject())
     }
-    
-    
     
 }

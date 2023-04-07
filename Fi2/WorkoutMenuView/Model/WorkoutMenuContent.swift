@@ -6,8 +6,18 @@
 //
 
 import Foundation
+import Firebase
 
-struct SavedWorkout: Codable, Equatable {
-    var title: String
-    var workouts: [CustomWorkout]
+struct SavedWorkout: Identifiable {
+    let id = UUID()
+    let title: String
+    let workouts: [CustomWorkout]
+
+    func toAnyObject() -> Any {
+        let workoutArray = workouts.map { $0.toAnyObject() }
+        return [
+            "title": title,
+            "workouts": workoutArray
+        ]
+    }
 }

@@ -57,7 +57,15 @@ struct CustomWorkoutView: View {
                     }
                     
                     if !custom.selectedWorkouts.isEmpty {
-                        WorkoutEditorView(selectedWorkouts: Array(custom.selectedWorkouts))
+                        WorkoutEditorView(
+                            selectedWorkouts: Array(custom.selectedWorkouts),
+                            onSave: { title in
+                                // Save the workout title and update the workoutTitles binding
+                                custom.saveWorkoutToDatabase(title, Array(custom.selectedWorkouts))
+                                    workoutTitles = custom.savedWorkouts.map { $0.title }
+                                    presentationMode.wrappedValue.dismiss()
+                            }
+                        )
                     }
                 }
                 .navigationBarTitle("Choose Your Workout")
@@ -78,10 +86,6 @@ struct CustomWorkoutView: View {
                 }
                 .onDisappear {
                     custom.stopListening()
-                }
-                .onChange(of: custom.savedWorkouts) { savedWorkouts in
-                    // Update workoutTitles when a new workout is saved
-                    workoutTitles = savedWorkouts.map { $0.title }
                 }
             }
         }

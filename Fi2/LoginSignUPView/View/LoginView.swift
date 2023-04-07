@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct LoginView: View {
     @ObservedObject var login = LoginViewModel()
-    @State var navigateToWorkoutMenu = false
+    @State var navigateToMenuPageView = false
     
     var body: some View {
         NavigationView {
@@ -38,13 +38,17 @@ struct LoginView: View {
                 Spacer()
                 
                 Button(action: {
-                    // TODO
                     if login.isLogin {
+                        login.onSuccess = {
+                            navigateToMenuPageView = true
+                        }
                         login.loginUser()
                     } else {
+                        login.onSuccess = {
+                            // handle success case for create account here
+                        }
                         login.createUser()
                     }
-                    navigateToWorkoutMenu = true
                 }, label: {
                     Text(login.isLogin ? "Log In" : "Create Account")
                         .foregroundColor(.white)
@@ -54,14 +58,19 @@ struct LoginView: View {
                 .cornerRadius(8)
                 
                 
+                NavigationLink(
+                    destination: MenuPageView(),
+                    isActive: $navigateToMenuPageView,
+                    label: { EmptyView() }
+                )
+                .hidden()
             }
             .navigationTitle(login.isLogin ? "Welcome Back" : "Welcome")
-            .sheet(isPresented: $navigateToWorkoutMenu) {
-                WorkoutMenuView()
-            }
+            
         }
     }
 }
+
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

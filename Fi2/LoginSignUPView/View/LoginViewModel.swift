@@ -12,6 +12,7 @@ class LoginViewModel: ObservableObject {
     @Published var isLogin = false
     @Published var email = ""
     @Published var password = ""
+    var onSuccess: (() -> Void)?
     
     func loginUser() {
         Auth.auth().signIn(withEmail: email, password: password) { result, err in
@@ -20,6 +21,10 @@ class LoginViewModel: ObservableObject {
                 return
             }
             print("Successfully logged in with ID: \(result?.user.uid ?? "")")
+            if let email = result?.user.email {
+                UserDefaults.standard.set(email, forKey: "email") // Save email to UserDefaults
+            }
+            self.onSuccess?()
         }
     }
     
@@ -30,6 +35,7 @@ class LoginViewModel: ObservableObject {
                 return
             }
             print("Successfully created account with ID: \(result?.user.uid ?? "")")
+            self.onSuccess?()
         })
     }
 }

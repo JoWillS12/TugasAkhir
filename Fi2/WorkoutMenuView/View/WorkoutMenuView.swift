@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct WorkoutMenuView: View {
-//    @ObservedObject var menu = WorkoutMenuViewModel()
-    @State var workoutTitles: [String] = []
+    @ObservedObject var menu = WorkoutMenuViewModel()
     
     var body: some View {
         NavigationView {
@@ -27,20 +26,8 @@ struct WorkoutMenuView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-                        //                    Button(action: {
-                        //                        // Action to perform when the button is tapped
-                        //                    }) {
-                        //                        Text("Add Custom Workout")
-                        //                            .font(.headline)
-                        //                            .foregroundColor(.white)
-                        //                            .padding(.all, 4.0)
-                        //                            .overlay(
-                        //                                RoundedRectangle(cornerRadius: 4)
-                        //                                    .stroke(Color.white, lineWidth: 2)
-                        //                            )
-                        //                    }
                         
-                        NavigationLink(destination: CustomWorkoutView(workoutTitles: $workoutTitles)) {
+                        NavigationLink(destination: CustomWorkoutView(workoutTitles: $menu.workoutTitles)) {
                             Text("Add Custom Workout")
                                 .font(.headline)
                                 .foregroundColor(.white)
@@ -56,8 +43,9 @@ struct WorkoutMenuView: View {
                         
                         ScrollView {
                             VStack(spacing: geometry.size.height * 0.023) {
-                                ForEach(workoutTitles, id: \.self) { title in
+                                ForEach(menu.workoutTitles, id: \.self) { title in
                                     Text(title)
+                                        .foregroundColor(.black)
                                 }
                             }
                             .padding(.horizontal)

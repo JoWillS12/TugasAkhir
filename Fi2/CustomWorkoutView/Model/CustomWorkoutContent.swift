@@ -13,7 +13,7 @@ struct CustomWorkout: Identifiable, Codable, Hashable {
     var bodypart: String
     var image: String
     let reps: String
-//    var category: String
+    //    var category: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -21,5 +21,15 @@ struct CustomWorkout: Identifiable, Codable, Hashable {
     
     static func == (lhs: CustomWorkout, rhs: CustomWorkout) -> Bool {
         return lhs.id == rhs.id
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "id": id,
+            "name": name,
+            "bodypart": bodypart,
+            "image": image,
+            "reps": reps
+        ]
     }
 }

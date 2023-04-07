@@ -15,6 +15,7 @@ struct EditProfileView: View {
     @State var gender = ""
     @ObservedObject var profile: ProfileViewModel
     @State private var email: String
+    @ObservedObject var login = LoginViewModel()
     
     init(profile: ProfileViewModel) {
         self._profile = ObservedObject(wrappedValue: profile)
@@ -44,10 +45,10 @@ struct EditProfileView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     
-                    TextField("Email", text: $profile.email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .disabled(true)
+                    Text("Email: \(profile.email)")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .padding(.top, 16)
                     
                     Button(action: {
                         // Update profile logic
