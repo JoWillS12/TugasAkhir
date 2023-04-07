@@ -27,7 +27,7 @@ struct WorkoutMenuView: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                         
-                        NavigationLink(destination: CustomWorkoutView(workoutTitles: $menu.workoutTitles)) {
+                        NavigationLink(destination: CustomWorkoutView(workoutTitles: $menu.savedWorkouts)) {
                             Text("Add Custom Workout")
                                 .font(.headline)
                                 .foregroundColor(.white)
@@ -42,17 +42,37 @@ struct WorkoutMenuView: View {
                             .frame(height: geometry.size.height * 0.07)
                         
                         ScrollView {
-                            VStack(spacing: geometry.size.height * 0.023) {
-                                ForEach(menu.workoutTitles, id: \.self) { title in
-                                    Text(title)
-                                        .foregroundColor(.black)
+                            VStack(spacing: geometry.size.height * 0.04) {
+                                
+                                ForEach(menu.savedWorkouts) { savedWorkout in
+                                    Button(action: {
+                                        // Add action you want to perform on button tap
+                                    }) {
+                                        Text(savedWorkout.title)
+                                            .foregroundColor(.black)
+                                    }
+                                    .frame(width: geometry.size.width * 0.96, height: geometry.size.height * 0.14)
+                                    .background(
+                                        Rectangle()
+                                            .fill(Color.gray)
+                                            .cornerRadius(25)
+                                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                                    )
+                                    
                                 }
+                                
                             }
-                            .padding(.horizontal)
+//                            .padding(.horizontal)
+//                            .background(Color.red)
                             
-                            Divider()
-                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.004)
-                                .overlay(Color.black)
+                            
+                            
+                            
+                            
+                            
+                            //                            Divider()
+                            //                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.004)
+                            //                                .overlay(Color.black)
                         }
                         
                     }
@@ -60,6 +80,9 @@ struct WorkoutMenuView: View {
             }
         }
         .navigationBarHidden(true)
+        .onAppear {
+            menu.fetchData()
+        }
     }
 }
 

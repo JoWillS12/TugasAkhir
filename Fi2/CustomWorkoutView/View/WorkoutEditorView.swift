@@ -31,7 +31,7 @@ struct WorkoutEditorView: View {
                 Spacer()
                     .frame(width: 20)
                 Button(action: {
-                    onSave(workoutTitle)
+                    onSave(custom.title)
                 }, label: {
                     Text("Save")
                         .foregroundColor(.white)
@@ -41,7 +41,13 @@ struct WorkoutEditorView: View {
                         .cornerRadius(10)
                 })
                 .padding(.horizontal, 20)
+                // Add a NavigationLink inside the button's action closure
+                NavigationLink(destination: WorkoutMenuView()) {
+                    EmptyView()
+                }
+                .hidden()
             }
+
             ScrollView{
                 
                 ForEach(selectedWorkouts) { workout in

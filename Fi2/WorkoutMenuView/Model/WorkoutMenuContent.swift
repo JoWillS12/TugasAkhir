@@ -10,7 +10,7 @@ import Firebase
 
 struct SavedWorkout: Identifiable {
     let id = UUID()
-    let title: String
+    var title: String
     let workouts: [CustomWorkout]
 
     func toAnyObject() -> Any {

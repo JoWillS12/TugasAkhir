@@ -10,7 +10,8 @@ import SwiftUI
 struct CustomWorkoutView: View {
     @ObservedObject var custom = CustomWorkoutViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @Binding var workoutTitles: [String]
+    @Binding var workoutTitles: [SavedWorkout]
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -56,14 +57,15 @@ struct CustomWorkoutView: View {
                         .padding(.bottom, 50)
                     }
                     
+                    
                     if !custom.selectedWorkouts.isEmpty {
                         WorkoutEditorView(
                             selectedWorkouts: Array(custom.selectedWorkouts),
                             onSave: { title in
                                 // Save the workout title and update the workoutTitles binding
                                 custom.saveWorkoutToDatabase(title, Array(custom.selectedWorkouts))
-                                    workoutTitles = custom.savedWorkouts.map { $0.title }
-                                    presentationMode.wrappedValue.dismiss()
+                                workoutTitles = custom.savedWorkouts;           presentationMode.wrappedValue.dismiss()
+                                
                             }
                         )
                     }
@@ -87,6 +89,7 @@ struct CustomWorkoutView: View {
                 .onDisappear {
                     custom.stopListening()
                 }
+                
             }
         }
     }
