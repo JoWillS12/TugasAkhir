@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import FirebaseFirestore
 
 struct EditProfileView: View {
     @State var name = ""
@@ -51,21 +50,7 @@ struct EditProfileView: View {
                         .padding(.top, 16)
                     
                     Button(action: {
-                        // Update profile logic
-//                        let db = Firestore.firestore()
-//                        let userRef = db.collection("users").document(profile.email)
-//                        userRef.updateData([
-//                            "name": name,
-//                            "age": age,
-//                            "gender": gender
-//                        ]) { error in
-//                            if let error = error {
-//                                print("Error updating document: \(error)")
-//                            } else {
-//                                print("Document successfully updated")
-//                                // You may want to show an alert or navigate back to the previous view here
-//                            }
-//                        }
+                       
                     }, label: {
                         Text("Save Changes")
                             .padding(.horizontal, 40)

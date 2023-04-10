@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-
+import FirebaseDatabase
 class EditProfileViewModel: ObservableObject {
     @Published var name = ""
     @Published var age = ""
     @Published var gender = ""
     @Published var email = ""
-    @Published var password = ""
+    
     
     
 }

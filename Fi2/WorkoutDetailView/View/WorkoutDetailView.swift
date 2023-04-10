@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     @StateObject var detail: WorkoutDetailViewModel
+    @State var showingWorkoutStart = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -82,18 +83,19 @@ struct WorkoutDetailView: View {
                         .padding(.bottom, 50)
                     }
                     
-                    Button(action:{} , label: {
+                    NavigationLink(destination: WorkoutStartView(viewModel: WorkoutStartViewModel(savedWorkout: detail.savedWorkout)), isActive: $showingWorkoutStart) {
                         VStack(spacing: 4) {
                             Text("Start Workout")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                         }
-                    })
+                    }
                     .background((Rectangle()
                         .fill(Color.green)
                         .frame(width: geometry.size.width * (0.9), height: geometry.size.height * 0.06)
                         .cornerRadius(25)))
+                    
                 }
             }
         }

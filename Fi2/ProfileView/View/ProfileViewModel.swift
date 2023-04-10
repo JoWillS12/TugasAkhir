@@ -8,7 +8,10 @@
 import SwiftUI
 
 class ProfileViewModel: ObservableObject {
-//    @Published var email = ""
+    //    @Published var email = ""
+    @Published var name = ""
+    @Published var age = ""
+    @Published var gender = ""
     @Published var selectedMenu = "Add Friend"
     @Published var friendName = ""
     @Published var friendScore = ""

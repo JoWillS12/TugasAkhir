@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */; };
 		17DE288229B1C6EB00F5C186 /* Fi2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288129B1C6EB00F5C186 /* Fi2App.swift */; };
 		17DE288429B1C6EB00F5C186 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288329B1C6EB00F5C186 /* ContentView.swift */; };
 		17DE288629B1C6EC00F5C186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DE288529B1C6EC00F5C186 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStartViewModel.swift; sourceTree = "<group>"; };
 		17DE287E29B1C6EB00F5C186 /* Fi2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fi2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DE288129B1C6EB00F5C186 /* Fi2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fi2App.swift; sourceTree = "<group>"; };
 		17DE288329B1C6EB00F5C186 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				17FAD87A29C757F80035AF33 /* WorkoutStartView.swift */,
+				174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				17FAD8A429D731B20035AF33 /* WorkoutMenuContent.swift in Sources */,
 				17FAD87D29CAEDD30035AF33 /* WorkoutDetailViewModel.swift in Sources */,
 				17FAD86C29C601B30035AF33 /* EditProfileViewModel.swift in Sources */,
+				174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */,
 				17FAD89C29D461170035AF33 /* GifImage.swift in Sources */,
 				17FAD88129D1EB500035AF33 /* ResultPopUpView.swift in Sources */,
 				17DE28B429B1CBFD00F5C186 /* LoginView.swift in Sources */,
