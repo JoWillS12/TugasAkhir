@@ -45,11 +45,11 @@ struct WorkoutMenuView: View {
                             VStack(spacing: geometry.size.height * 0.04) {
                                 
                                 ForEach(menu.savedWorkouts) { savedWorkout in
-                                    Button(action: {
-                                        // Add action you want to perform on button tap
-                                    }) {
+                                    NavigationLink(destination: WorkoutDetailView(detail: WorkoutDetailViewModel(savedWorkout: savedWorkout))) {
                                         Text(savedWorkout.title)
-                                            .foregroundColor(.black)
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
                                     }
                                     .frame(width: geometry.size.width * 0.96, height: geometry.size.height * 0.14)
                                     .background(
@@ -58,7 +58,6 @@ struct WorkoutMenuView: View {
                                             .cornerRadius(25)
                                             .clipShape(RoundedRectangle(cornerRadius: 25))
                                     )
-                                    
                                 }
                                 
                             }
