@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @ObservedObject var profile = ProfileViewModel()
     @ObservedObject var login = LoginViewModel()
+    @ObservedObject var edit = EditProfileViewModel()
     
     var body: some View {
         NavigationView {
@@ -35,7 +36,7 @@ struct ProfileView: View {
                             Spacer()
                                 .frame(width: geometry.size.width * 0.13)
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Joseph")
+                                Text(edit.name)
                                     .foregroundColor(.white)
                                     .font(.largeTitle)
                                     .fontWeight(.bold)

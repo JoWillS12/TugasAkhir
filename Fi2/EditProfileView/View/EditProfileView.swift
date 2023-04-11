@@ -9,16 +9,15 @@ import SwiftUI
 import FirebaseAuth
 
 struct EditProfileView: View {
-    @State var name = ""
-    @State var age = ""
-    @State var gender = ""
     @ObservedObject var profile: ProfileViewModel
     @State private var email: String
     @ObservedObject var login = LoginViewModel()
+    @ObservedObject var edit = EditProfileViewModel()
+    
     
     init(profile: ProfileViewModel) {
         self._profile = ObservedObject(wrappedValue: profile)
-        self._email = State(initialValue: profile.email)
+        self._email = State(initialValue: Auth.auth().currentUser?.email ?? "")
     }
     
     var body: some View {
@@ -31,26 +30,26 @@ struct EditProfileView: View {
                         .frame(width: geometry.size.width * 0.4)
                         .padding()
                     
-                    TextField("NickName", text: $name)
+                    TextField("NickName", text: $edit.name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     
-                    TextField("Age", text: $age)
+                    TextField("Age", text: $edit.age)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                         .keyboardType(.numberPad)
                     
-                    TextField("Gender", text: $gender)
+                    TextField("Gender", text: $edit.gender)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     
-                    Text("Email: \(profile.email)")
+                    Text("Email: \(email)")
                         .font(.headline)
                         .foregroundColor(.primary)
                         .padding(.top, 16)
                     
                     Button(action: {
-                       
+                        edit.saveChanges()
                     }, label: {
                         Text("Save Changes")
                             .padding(.horizontal, 40)

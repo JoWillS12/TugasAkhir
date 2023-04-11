@@ -8,26 +8,24 @@
 import Foundation
 import FirebaseDatabase
 import Firebase
+import FirebaseAuth
 
 class WorkoutMenuViewModel: ObservableObject {
     @Published var savedWorkouts: [SavedWorkout] = []
     let ref = Database.database().reference()
+    var userId: String = ""
 
     func addWorkout(savedWorkout: SavedWorkout) {
         savedWorkouts.append(savedWorkout)
         // workoutTitles = savedWorkouts.map { $0.title }
     }
 
-    func fetchData() {
-        ref.child("savedWorkouts").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let value = snapshot.value as? [String: Any] else {
-                return
-            }
-            for (_, data) in value {
-                guard let savedWorkoutData = data as? [String: Any],
-                      let title = savedWorkoutData["title"] as? String,
-                      let workoutsData = savedWorkoutData["workouts"] as? [[String: Any]] else {
-                    continue
+    func fetchDataForUser(userId: String) {
+            ref.child("savedWorkouts").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let value = snapshot.value as? [String: Any],
+                      let title = value["title"] as? String,
+                      let workoutsData = value["workouts"] as? [[String: Any]] else {
+                    return
                 }
                 var workouts: [CustomWorkout] = []
                 for workoutData in workoutsData {
@@ -42,12 +40,11 @@ class WorkoutMenuViewModel: ObservableObject {
                     workouts.append(workout)
                 }
                 let savedWorkout = SavedWorkout(title: title, workouts: workouts)
-                self.addWorkout(savedWorkout: savedWorkout)
+                self.savedWorkouts.append(savedWorkout)
+            }) { (error) in
+                print("Error fetching data: \(error.localizedDescription)")
             }
-        }) { (error) in
-            print("Error fetching data: \(error.localizedDescription)")
         }
-    }
 }
 
 

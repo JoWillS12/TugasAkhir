@@ -12,6 +12,8 @@ class LoginViewModel: ObservableObject {
     @Published var isLogin = false
     @Published var email = ""
     @Published var password = ""
+    @Published var userId = ""
+    @Published var navigateToMenuPageView = false // Add this property
     var onSuccess: (() -> Void)?
     
     func loginUser() {
@@ -24,20 +26,25 @@ class LoginViewModel: ObservableObject {
             if let email = result?.user.email {
                 UserDefaults.standard.set(email, forKey: "email") // Save email to UserDefaults
             }
+            self.userId = result?.user.uid ?? ""
+            self.navigateToMenuPageView = true // Set navigateToMenuPageView to true on success
             self.onSuccess?()
         }
     }
     
     func createUser() {
-        Auth.auth().createUser(withEmail: email, password: password , completion: { result, err in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { result, err in
             if let err = err {
                 print("Failed due to error:", err)
                 return
             }
             print("Successfully created account with ID: \(result?.user.uid ?? "")")
+            self.userId = result?.user.uid ?? ""
+            self.navigateToMenuPageView = true // Set navigateToMenuPageView to true on success
             self.onSuccess?()
         })
     }
 }
+
 
 

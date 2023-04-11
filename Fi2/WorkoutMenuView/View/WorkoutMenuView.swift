@@ -80,7 +80,7 @@ struct WorkoutMenuView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            menu.fetchData()
+            menu.fetchDataForUser(userId: menu.userId)
         }
     }
 }

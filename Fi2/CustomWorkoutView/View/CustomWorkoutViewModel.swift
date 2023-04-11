@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 final class CustomWorkoutViewModel: ObservableObject {
     @Published var workouts: [CustomWorkout] = []
@@ -64,26 +65,26 @@ final class CustomWorkoutViewModel: ObservableObject {
     
     func getSectionTitle(index: Int) -> String {
         let sectionNumber = index / 10
-        //        let categories = ["ARMS", "LEGS", "BACK", "WAIST", "CHEST"]
         if sectionNumber < categories.count {
-            return categories[sectionNumber]
+            let category = categories[sectionNumber]
+            if let filteredCategory = filteredWorkouts.first(where: { $0.bodypart == category }) {
+                return filteredCategory.bodypart
+            } else {
+                return ""
+            }
         } else {
             return ""
         }
     }
     
-//    func saveSelectedWorkout(withTitle title: String) {
-//        let selectedWorkoutsData = try! encoder.encode(Array(selectedWorkouts))
-//        let selectedWorkoutsString = String(data: selectedWorkoutsData, encoding: .utf8)!
-//        let workoutData: [String: Any] = ["title": title, "workouts": selectedWorkoutsString]
-//        databasePath?.child("saved_workouts").childByAutoId().setValue(workoutData)
-//        selectedWorkouts = []
-//    }
     
     func saveWorkoutToDatabase(_ title: String, _ workouts: [CustomWorkout]) {
-        let ref = Database.database().reference(withPath: "savedWorkouts/\(UUID().uuidString)")
-        let savedWorkout = SavedWorkout(title: title, workouts: workouts)
-        ref.setValue(savedWorkout.toAnyObject())
+        if let userId = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference(withPath: "savedWorkouts/\(userId)/\(UUID().uuidString)")
+            let savedWorkout = SavedWorkout(title: title, workouts: workouts)
+            ref.setValue(savedWorkout.toAnyObject())
+        }
     }
+    
     
 }
