@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutMenuView: View {
     @ObservedObject var menu = WorkoutMenuViewModel()
+    @ObservedObject var login = LoginViewModel()
     
     var body: some View {
         NavigationView {
@@ -61,17 +62,6 @@ struct WorkoutMenuView: View {
                                 }
                                 
                             }
-//                            .padding(.horizontal)
-//                            .background(Color.red)
-                            
-                            
-                            
-                            
-                            
-                            
-                            //                            Divider()
-                            //                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.004)
-                            //                                .overlay(Color.black)
                         }
                         
                     }
@@ -80,13 +70,21 @@ struct WorkoutMenuView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
+            menu.userId = login.userId // Set userId to login.userId
             menu.fetchDataForUser(userId: menu.userId)
+        }
+        .onReceive(menu.$savedWorkouts) { _ in
+            // Force view to refresh when menu.savedWorkouts changes
+            // This may help in case the view is not updating properly
+            // when saved workouts data changes
+            self.menu.objectWillChange.send()
         }
     }
 }
 
-struct WorkoutMenuVIew_Previews: PreviewProvider {
+struct WorkoutMenuView_Previews: PreviewProvider {
     static var previews: some View {
         WorkoutMenuView()
     }
 }
+

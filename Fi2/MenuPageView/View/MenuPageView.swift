@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MenuPageView: View {
+    @EnvironmentObject var login: LoginViewModel
+    
     var body: some View {
         TabView {
             WorkoutMenuView()
@@ -24,12 +26,15 @@ struct MenuPageView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
-        }    }
+        }
+        .environmentObject(login)
+        
+    }
 }
 
 struct MenuPageView_Previews: PreviewProvider {
     static var previews: some View {
         MenuPageView()
-//            .environmentObject(FriendPageView())
+            .environmentObject(LoginViewModel())
     }
 }

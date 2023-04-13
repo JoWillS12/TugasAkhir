@@ -13,14 +13,19 @@ import FirebaseAuth
 class WorkoutMenuViewModel: ObservableObject {
     @Published var savedWorkouts: [SavedWorkout] = []
     let ref = Database.database().reference()
-    var userId: String = ""
-
+    @Published var userId: String = ""
+    
     func addWorkout(savedWorkout: SavedWorkout) {
         savedWorkouts.append(savedWorkout)
         // workoutTitles = savedWorkouts.map { $0.title }
     }
-
+    
     func fetchDataForUser(userId: String) {
+        guard !userId.isEmpty else {
+            print("Empty userId. Data may not be fetched correctly.")
+            return
+        }
+        if !userId.isEmpty {
             ref.child("savedWorkouts").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let value = snapshot.value as? [String: Any],
                       let title = value["title"] as? String,
@@ -40,11 +45,15 @@ class WorkoutMenuViewModel: ObservableObject {
                     workouts.append(workout)
                 }
                 let savedWorkout = SavedWorkout(title: title, workouts: workouts)
-                self.savedWorkouts.append(savedWorkout)
+                DispatchQueue.main.async {
+                    self.savedWorkouts.append(savedWorkout)
+                }
             }) { (error) in
                 print("Error fetching data: \(error.localizedDescription)")
             }
         }
+    }
+    
 }
 
 

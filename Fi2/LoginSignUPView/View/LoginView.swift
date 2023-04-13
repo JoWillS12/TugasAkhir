@@ -50,7 +50,7 @@ struct LoginView: View {
                 .cornerRadius(8)
 
                 NavigationLink(
-                    destination: MenuPageView(),
+                    destination: MenuPageView().environmentObject(login),
                     isActive: $login.navigateToMenuPageView, // Bind to the navigateToMenuPageView property in LoginViewModel
                     label: { EmptyView() }
                 )
