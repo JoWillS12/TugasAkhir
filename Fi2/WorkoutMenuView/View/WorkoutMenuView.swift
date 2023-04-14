@@ -10,6 +10,7 @@ import SwiftUI
 struct WorkoutMenuView: View {
     @ObservedObject var menu = WorkoutMenuViewModel()
     @ObservedObject var login = LoginViewModel()
+    @ObservedObject var custom = CustomWorkoutViewModel()
     
     var body: some View {
         NavigationView {
@@ -45,7 +46,7 @@ struct WorkoutMenuView: View {
                         ScrollView {
                             VStack(spacing: geometry.size.height * 0.04) {
                                 
-                                ForEach(menu.savedWorkouts) { savedWorkout in
+                                ForEach(custom.savedWorkouts, id: \.title) { savedWorkout in
                                     NavigationLink(destination: WorkoutDetailView(detail: WorkoutDetailViewModel(savedWorkout: savedWorkout))) {
                                         Text(savedWorkout.title)
                                             .font(.title)
@@ -72,6 +73,7 @@ struct WorkoutMenuView: View {
         .onAppear {
             menu.userId = login.userId // Set userId to login.userId
             menu.fetchDataForUser(userId: menu.userId)
+            custom.fetchSavedWorkouts()
         }
         .onReceive(menu.$savedWorkouts) { _ in
             // Force view to refresh when menu.savedWorkouts changes

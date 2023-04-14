@@ -28,7 +28,7 @@ class WorkoutStartViewModel: ObservableObject {
                 self.remainingTime -= 1
                 if self.remainingTime <= 0 {
                     self.currentIndex = (self.currentIndex + 1) % self.workouts.count
-                    self.remainingTime = 40 // reset the timer
+                    self.remainingTime = 30 // reset the timer
                 }
             }
         }

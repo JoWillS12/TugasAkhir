@@ -87,4 +87,42 @@ final class CustomWorkoutViewModel: ObservableObject {
     }
     
     
+    func fetchSavedWorkouts() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let savedWorkoutsRef = Database.database().reference(withPath: "savedWorkouts/\(userId)")
+        savedWorkoutsRef.observeSingleEvent(of: .value) { [weak self] snapshot in
+            guard let self = self else {
+                return
+            }
+            
+            var savedWorkouts: [SavedWorkout] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let value = snapshot.value as? [String: Any] {
+                    if let title = value["title"] as? String,
+                       let workoutsData = value["workouts"] as? [[String: Any]] {
+                        do {
+                            let workouts = try workoutsData.map { data -> CustomWorkout in
+                                let workoutData = try JSONSerialization.data(withJSONObject: data)
+                                return try self.decoder.decode(CustomWorkout.self, from: workoutData)
+                            }
+                            let savedWorkout = SavedWorkout(title: title, workouts: workouts)
+                            savedWorkouts.append(savedWorkout)
+                        } catch {
+                            print("Failed to decode saved workout", error)
+                        }
+                    }
+                }
+            }
+            
+            // Update the `savedWorkouts` property with the fetched data
+            self.savedWorkouts = savedWorkouts
+        }
+    }
+    
+    
+    
 }

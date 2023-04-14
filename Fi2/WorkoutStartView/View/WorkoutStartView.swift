@@ -57,11 +57,17 @@ struct WorkoutStartView: View {
                         .foregroundColor(.black)
                         .padding(.top, 10.0)
                     
+                    Text(viewModel.workouts[viewModel.currentIndex].reps)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .padding(.top)
+                    
                     Text("\(viewModel.remainingTime)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.black)
-                        .padding(.top, 30.0)
+                        .padding(.top, 10.0)
                     
                     HStack(spacing: 20) {
                         Button(action: {

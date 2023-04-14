@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuPageView: View {
     @EnvironmentObject var login: LoginViewModel
-    
+    @ObservedObject var menu = WorkoutMenuViewModel()
     var body: some View {
         TabView {
             WorkoutMenuView()
@@ -28,7 +28,7 @@ struct MenuPageView: View {
                 }
         }
         .environmentObject(login)
-        
+        .environmentObject(menu)
     }
 }
 
