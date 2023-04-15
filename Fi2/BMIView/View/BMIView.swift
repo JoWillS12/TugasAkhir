@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct BMIView: View {
     @ObservedObject var BMI = BMIViewModel()
     @State var showPopUp = false
@@ -75,8 +73,20 @@ struct BMIView: View {
                         //                            .fontWeight(.bold)
                     }
                     
-                    Rectangle()
-                        .fill(.white)
+                    ScrollView{
+                        VStack{
+                            ForEach(BMI.BMIData, id:\.self){ BData in
+                                HStack{
+                                    Text("Height: \(BData.height, specifier: "%.0f")")
+                                    Text("Weight: \(BData.weight, specifier: "%.0f")")
+                                    Text("Result: \(BData.result, specifier: "%.0f")")
+                                }
+                            }
+                        }
+                        .onAppear {
+                            BMI.fetch()
+                        }
+                    }
                 }
                 
             }
@@ -86,6 +96,7 @@ struct BMIView: View {
             ResultPopUpView(title: "Your Result", message: "\(BMI.result.rounded()) and you are \(BMI.category)!", buttonBack: "Back", show: $showPopUp)
         }
     }
+    
 }
 
 struct BMIView_Previews: PreviewProvider {
