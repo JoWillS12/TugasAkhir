@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */; };
 		177D75EC29EB059600CDEB83 /* BMIDataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EB29EB059600CDEB83 /* BMIDataContent.swift */; };
+		177D75EF29EB166800CDEB83 /* FriendsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EE29EB166800CDEB83 /* FriendsContent.swift */; };
 		17DE288229B1C6EB00F5C186 /* Fi2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288129B1C6EB00F5C186 /* Fi2App.swift */; };
 		17DE288429B1C6EB00F5C186 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288329B1C6EB00F5C186 /* ContentView.swift */; };
 		17DE288629B1C6EC00F5C186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DE288529B1C6EC00F5C186 /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStartViewModel.swift; sourceTree = "<group>"; };
 		177D75EB29EB059600CDEB83 /* BMIDataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIDataContent.swift; sourceTree = "<group>"; };
+		177D75EE29EB166800CDEB83 /* FriendsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContent.swift; sourceTree = "<group>"; };
 		17DE287E29B1C6EB00F5C186 /* Fi2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fi2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DE288129B1C6EB00F5C186 /* Fi2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fi2App.swift; sourceTree = "<group>"; };
 		17DE288329B1C6EB00F5C186 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 			isa = PBXGroup;
 			children = (
 				177D75EB29EB059600CDEB83 /* BMIDataContent.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		177D75ED29EB164000CDEB83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				177D75EE29EB166800CDEB83 /* FriendsContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +338,7 @@
 		17FAD85F29BF05920035AF33 /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
+				177D75ED29EB164000CDEB83 /* Model */,
 				17FAD86029BF05A30035AF33 /* View */,
 			);
 			path = ProfileView;
@@ -599,6 +610,7 @@
 				174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */,
 				17FAD89C29D461170035AF33 /* GifImage.swift in Sources */,
 				17FAD88129D1EB500035AF33 /* ResultPopUpView.swift in Sources */,
+				177D75EF29EB166800CDEB83 /* FriendsContent.swift in Sources */,
 				17DE28B429B1CBFD00F5C186 /* LoginView.swift in Sources */,
 				17DE28CF29B5C90C00F5C186 /* BMIView.swift in Sources */,
 				17FAD89829D455CE0035AF33 /* WorkoutDataView.swift in Sources */,
@@ -781,8 +793,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -810,8 +822,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

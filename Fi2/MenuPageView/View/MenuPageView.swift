@@ -22,14 +22,18 @@ struct MenuPageView: View {
                     Label("BMI", systemImage: "scalemass")
                 }
             
-            ProfileView()
+            ProfileView(edit: EditProfileViewModel())
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
         }
+        
+        .accentColor(Color("GreenAssets"))
         .environmentObject(login)
         .environmentObject(menu)
+        .environment(\.colorScheme, .dark)
     }
+    
 }
 
 struct MenuPageView_Previews: PreviewProvider {

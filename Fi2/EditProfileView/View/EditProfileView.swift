@@ -24,6 +24,9 @@ struct EditProfileView: View {
         GeometryReader{ geometry in
             ZStack{
                 VStack{
+                    Text("EDIT PROFILE")
+                        .font(.title)
+                        .fontWeight(.bold)
                     Image(systemName: "person.circle.fill")
                         .resizable()
                         .scaledToFit()
@@ -42,6 +45,29 @@ struct EditProfileView: View {
                     TextField("Gender", text: $edit.gender)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
+                    HStack{
+                        VStack{
+                            TextField("UNIQUE CODE", text: $edit.uCode)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.leading, 20.0)
+                        }
+                        
+                        
+                        Button(action: {
+                            edit.uCode = edit.generateUniqueCode()
+                        }, label: {
+                            Text("Generate Unique Code")
+                                .foregroundColor(.black)
+                        })
+                        .frame(width: geometry.size.width * 0.46, height: geometry.size.height * 0.05, alignment: .center)
+                        .background(Color("GreenAssets"))
+                        .cornerRadius(8)
+                        .opacity(edit.codeGenerated ? 0 : 1)
+                        .disabled(edit.codeGenerated)
+                        .padding(20.0)
+                        
+                    }
+                    
                     
                     Text("Email: \(email)")
                         .font(.headline)
@@ -54,18 +80,21 @@ struct EditProfileView: View {
                         Text("Save Changes")
                             .padding(.horizontal, 40)
                             .padding(.vertical, 10)
-                            .background(Color.green)
-                            .foregroundColor(.white)
+                            .background(Color("GreenAssets"))
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                     })
                     .frame(width: geometry.size.width * 0.6)
                 }
             }
+            
         }
-        .navigationBarTitle("Edit Profile")
+        .environment(\.colorScheme, .dark)
+        .background(Color("Background"))
         .onAppear {
             self.email = email
         }
+        
     }
 }
 

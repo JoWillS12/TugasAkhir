@@ -10,14 +10,18 @@ import SwiftUI
 struct ProfileView: View {
     @ObservedObject var profile = ProfileViewModel()
     @ObservedObject var login = LoginViewModel()
-    @ObservedObject var edit = EditProfileViewModel()
+    @ObservedObject var edit: EditProfileViewModel // pass the same instance of EditProfileViewModel
+    
+    init(edit: EditProfileViewModel) {
+        self.edit = edit
+    }
     
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
                 ZStack{
                     Rectangle()
-                        .fill(Color.green)
+                        .fill(Color("GreenAssets"))
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.35)
                         .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.13)
                         .ignoresSafeArea()
@@ -31,18 +35,18 @@ struct ProfileView: View {
                                 .clipShape(Circle())
                                 .overlay(
                                     Circle()
-                                        .stroke(Color.white, lineWidth: 2)
+                                        .stroke(Color.black, lineWidth: 2)
                                 )
                             Spacer()
                                 .frame(width: geometry.size.width * 0.13)
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(edit.name)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                 
                                 Text("Score: 500")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                                     .font(.title2)
                                     .fontWeight(.bold)
                                 
@@ -50,15 +54,15 @@ struct ProfileView: View {
                                 NavigationLink(destination: EditProfileView(profile: profile)) {
                                     Text("Edit Profile")
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                         .padding(.all, 4.0)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 4)
-                                                .stroke(Color.white, lineWidth: 2)
+                                                .stroke(Color.black, lineWidth: 2)
                                         )
                                 }
-
-
+                                
+                                
                             }
                             //                        Spacer() // Use a Spacer only where necessary
                         }
@@ -79,43 +83,40 @@ struct ProfileView: View {
                         
                         if profile.selectedMenu == "Add Friend" {
                             VStack {
-                                TextField("Friend's Name", text: $profile.friendName)
+                                TextField("Friend's Code", text: $profile.friendCode)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding()
+                                    .autocapitalization(.none)
                                 
                                 Button(action: {
-                                    // Perform the action here
-                                    profile.friendName = ""
-                                    profile.friendScore = ""
+                                    profile.addFriend()
+                                    profile.friendCode = ""
                                 }) {
                                     Text("Add Friend")
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.black)
                                         .padding()
                                         .frame(width: geometry.size.width * 0.5, alignment: .center)
-                                        .background(Color.blue)
+                                        .background(Color("GreenAssets"))
                                         .cornerRadius(15.0)
                                 }
                             }
                         } else if profile.selectedMenu == "Friend List" {
                             ScrollView{
                                 VStack {
-                                    ForEach(1...10, id: \.self) { index in
+                                    ForEach(profile.friends) { friend in
                                         HStack {
-                                            Text("Friend \(index)")
-                                                .font(.headline)
-                                                .foregroundColor(.white)
-                                            Spacer()
-                                            Text("\(index * 50)")
-                                                .font(.headline)
+                                            Text(friend.name)
+                                                .font(.title)
+                                                .fontWeight(.bold)
                                                 .foregroundColor(.white)
                                         }
                                         .padding()
                                         .frame(width: geometry.size.width * 0.9)
-                                        .background(Color.gray)
+                                        .background(Color("Item"))
                                         .cornerRadius(15.0)
-                                    }
-                                }
+                                    }                                }
                             }
                             
                         }
@@ -126,7 +127,9 @@ struct ProfileView: View {
                     
                 }
             }
+            .background(Color("Background"))
         }
+        .environment(\.colorScheme, .dark)
         
     }
     
@@ -136,6 +139,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(edit: EditProfileViewModel())
     }
 }

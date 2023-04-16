@@ -15,7 +15,7 @@ struct WorkoutDetailView: View {
         GeometryReader { geometry in
             ZStack {
                 Rectangle()
-                    .fill(Color.green)
+                    .fill(Color("GreenAssets"))
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.35)
                     .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.13)
                     .ignoresSafeArea()
@@ -23,7 +23,7 @@ struct WorkoutDetailView: View {
                     Text(detail.savedWorkout.title)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                         .padding(.top)
                     
                     Spacer()
@@ -73,7 +73,7 @@ struct WorkoutDetailView: View {
                                 }
                                 .padding()
                                 .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.2)
-                                .background(.gray)
+                                .background(Color("Item"))
                                 .cornerRadius(20)
                                 .shadow(radius: 5)
                             }
@@ -88,17 +88,19 @@ struct WorkoutDetailView: View {
                             Text("Start Workout")
                                 .font(.title2)
                                 .fontWeight(.bold)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                         }
                     }
                     .background((Rectangle()
-                        .fill(Color.green)
+                        .fill(Color("GreenAssets"))
                         .frame(width: geometry.size.width * (0.9), height: geometry.size.height * 0.06)
                         .cornerRadius(25)))
                     
                 }
             }
         }
+        .environment(\.colorScheme, .dark)
+        .background(Color("Background"))
     }
 }
 

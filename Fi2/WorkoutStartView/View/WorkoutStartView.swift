@@ -14,7 +14,7 @@ struct WorkoutStartView: View {
         GeometryReader { geometry in
             ZStack {
                 Rectangle()
-                    .fill(Color.green)
+                    .fill(Color("GreenAssets"))
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.35)
                     .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.13)
                     .ignoresSafeArea()
@@ -23,7 +23,7 @@ struct WorkoutStartView: View {
                     Text(viewModel.savedWorkout.title)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                         .padding(.top)
                     
                     Spacer()
@@ -54,19 +54,19 @@ struct WorkoutStartView: View {
                     Text(viewModel.workouts[viewModel.currentIndex].name)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.top, 10.0)
                     
                     Text(viewModel.workouts[viewModel.currentIndex].reps)
                         .font(.title3)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.top)
                     
                     Text("\(viewModel.remainingTime)")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.top, 10.0)
                     
                     HStack(spacing: 20) {
@@ -77,11 +77,11 @@ struct WorkoutStartView: View {
                             VStack(spacing: 4) {
                                 Image(systemName: viewModel.isPaused ? "play.circle.fill" : "pause.circle.fill")
                                     .font(.title2)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                             }
                         })
                         .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.06)
-                        .background(Rectangle().fill(Color.green).cornerRadius(25))
+                        .background(Rectangle().fill(Color("GreenAssets")).cornerRadius(25))
                         
                         
                         
@@ -94,11 +94,11 @@ struct WorkoutStartView: View {
                                 VStack(spacing: 4) {
                                     Image(systemName: "arrow.left.circle.fill")
                                         .font(.title2)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                 }
                             })
                             .frame(width: geometry.size.width * 0.2, height: geometry.size.height * 0.06)
-                            .background(Rectangle().fill(Color.green).cornerRadius(25))
+                            .background(Rectangle().fill(Color("GreenAssets")).cornerRadius(25))
                             NavigationLink(
                                 destination: WorkoutDetailView(detail: WorkoutDetailViewModel(savedWorkout: viewModel.savedWorkout)) .navigationBarBackButtonHidden(true),
                                 isActive: $viewModel.showWorkoutDetail,
@@ -115,6 +115,8 @@ struct WorkoutStartView: View {
                 }
             }
         }
+        .environment(\.colorScheme, .dark)
+        .background(Color("Background"))
     }
 }
 

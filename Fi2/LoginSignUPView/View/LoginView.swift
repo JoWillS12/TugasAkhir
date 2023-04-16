@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var login = LoginViewModel()
-
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
@@ -21,20 +21,21 @@ struct LoginView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-
+                .accentColor(Color("GreenAssets"))
+                
                 TextField("Email", text: $login.email)
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 280, height: 45, alignment: .center)
-
+                
                 SecureField("Password", text: $login.password)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 280, height: 45, alignment: .center)
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     if login.isLogin {
                         login.loginUser()
@@ -43,12 +44,13 @@ struct LoginView: View {
                     }
                 }, label: {
                     Text(login.isLogin ? "Log In" : "Create Account")
-                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
                 })
                 .frame(width: 280, height: 45, alignment: .center)
-                .background(Color.blue)
+                .background(Color("GreenAssets"))
                 .cornerRadius(8)
-
+                
                 NavigationLink(
                     destination: MenuPageView().environmentObject(login),
                     isActive: $login.navigateToMenuPageView, // Bind to the navigateToMenuPageView property in LoginViewModel
@@ -57,9 +59,12 @@ struct LoginView: View {
                 .hidden()
             }
             .navigationTitle(login.isLogin ? "Welcome Back" : "Welcome")
-
+            .background(Color("Background"))
         }
+        .environment(\.colorScheme, .dark)
+        
     }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {

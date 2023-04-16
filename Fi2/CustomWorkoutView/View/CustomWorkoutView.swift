@@ -91,7 +91,10 @@ struct CustomWorkoutView: View {
                 }
                 
             }
+            .background(Color("Background"))
+            .environment(\.colorScheme, .dark)
         }
+        
     }
 }
 

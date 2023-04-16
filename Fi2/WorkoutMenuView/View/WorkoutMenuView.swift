@@ -17,7 +17,7 @@ struct WorkoutMenuView: View {
             GeometryReader{ geometry in
                 ZStack{
                     Rectangle()
-                        .fill(Color.green)
+                        .fill(Color("GreenAssets"))
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.35)
                         .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.13)
                         .ignoresSafeArea()
@@ -27,16 +27,17 @@ struct WorkoutMenuView: View {
                         Text("Get Fit")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.black)
                         
                         NavigationLink(destination: CustomWorkoutView(workoutTitles: $menu.savedWorkouts)) {
                             Text("Add Custom Workout")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
                                 .padding(.all, 4.0)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.white, lineWidth: 2)
+                                        .stroke(Color.black, lineWidth: 2)
                                 )
                         }
                         
@@ -56,9 +57,10 @@ struct WorkoutMenuView: View {
                                     .frame(width: geometry.size.width * 0.96, height: geometry.size.height * 0.14)
                                     .background(
                                         Rectangle()
-                                            .fill(Color.gray)
+                                            .fill(Color("Item"))
                                             .cornerRadius(25)
                                             .clipShape(RoundedRectangle(cornerRadius: 25))
+                                        
                                     )
                                 }
                                 
@@ -67,6 +69,7 @@ struct WorkoutMenuView: View {
                         
                     }
                 }
+                .background(Color("Background"))
             }
         }
         .navigationBarHidden(true)
@@ -81,7 +84,9 @@ struct WorkoutMenuView: View {
             // when saved workouts data changes
             self.menu.objectWillChange.send()
         }
+        .environment(\.colorScheme, .dark)
     }
+    
 }
 
 struct WorkoutMenuView_Previews: PreviewProvider {

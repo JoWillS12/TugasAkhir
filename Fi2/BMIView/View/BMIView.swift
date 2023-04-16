@@ -57,11 +57,11 @@ struct BMIView: View {
                                 Text("Calculate")
                                     .font(.title2)
                                     .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.black)
                             }
                         })
                         .background((Rectangle()
-                            .fill(Color.green)
+                            .fill(Color("GreenAssets"))
                             .frame(width: geometry.size.width * (0.9), height: geometry.size.height * 0.06)
                             .cornerRadius(25)))
                         
@@ -75,11 +75,22 @@ struct BMIView: View {
                     
                     ScrollView{
                         VStack{
+                            Text("YOUR HISTORY")
+                                .font(.title)
+                                .fontWeight(.bold)
+                            Divider()
+                                .frame(height: geometry.size.height * 0.01)
                             ForEach(BMI.BMIData, id:\.self){ BData in
                                 HStack{
                                     Text("Height: \(BData.height, specifier: "%.0f")")
+                                        .font(.body)
+                                        .fontWeight(.bold)
                                     Text("Weight: \(BData.weight, specifier: "%.0f")")
+                                        .font(.body)
+                                        .fontWeight(.bold)
                                     Text("Result: \(BData.result, specifier: "%.0f")")
+                                        .font(.body)
+                                        .fontWeight(.bold)
                                 }
                             }
                         }
@@ -90,11 +101,14 @@ struct BMIView: View {
                 }
                 
             }
+            .background(Color("Background"))
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
             ResultPopUpView(title: "Your Result", message: "\(BMI.result.rounded()) and you are \(BMI.category)!", buttonBack: "Back", show: $showPopUp)
+            
         }
+        .environment(\.colorScheme, .dark)
     }
     
 }

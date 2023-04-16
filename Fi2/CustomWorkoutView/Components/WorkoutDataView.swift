@@ -47,12 +47,14 @@ struct WorkoutDataView: View {
                         Text(workout.name)
                             .font(.headline)
                             .fixedSize(horizontal: false, vertical: true)
+                            .foregroundColor(.white)
                         Text(workout.bodypart)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
                         Text(workout.reps)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
+                            
                     }
                     
                     Spacer()
@@ -60,11 +62,11 @@ struct WorkoutDataView: View {
             }
             .padding()
 //            .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.2)
-            .background(selected ? Color.blue.opacity(0.3) : Color.white)
+            .background(selected ? Color("Select").opacity(0.3) : Color("Item"))
             .cornerRadius(20)
             .shadow(radius: 5)
             
         }
-        
+        .environment(\.colorScheme, .dark)
     }
 }
