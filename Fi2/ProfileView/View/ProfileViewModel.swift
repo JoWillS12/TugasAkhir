@@ -17,6 +17,7 @@ class ProfileViewModel: ObservableObject {
     @Published var friendScore = ""
     @Published var menu = ["Add Friend", "Friend List"]
     @Published var friends: [Friend] = []
+    @Published var updateScore = 0
     
     
     let email = UserDefaults.standard.string(forKey: "email") ?? ""
@@ -33,11 +34,22 @@ class ProfileViewModel: ObservableObject {
                 for child in snapshot.children {
                     if let childSnapshot = child as? DataSnapshot,
                        let data = childSnapshot.value as? [String: Any] {
-                        let friend = Friend(id: UUID(), name: data["name"] as? String ?? "", code: data["code"] as? String ?? "")
+                        let friend = Friend(id: UUID(), name: data["name"] as? String ?? "", code: data["code"] as? String ?? "", score: data["score"] as? Int ?? 0)
                         newFriends.append(friend)
                     }
                 }
                 self.friends = newFriends
+            }
+        }
+        
+        if let user = Auth.auth().currentUser {
+            let uid = user.uid
+            let ref = Database.database().reference().child("users").child(uid).child("score")
+            
+            ref.observe(.value) { snapshot in
+                if let value = snapshot.value as? Int {
+                    self.updateScore = value
+                }
             }
         }
     }
@@ -47,7 +59,7 @@ class ProfileViewModel: ObservableObject {
         let ref = Database.database().reference().child("users")
         ref.queryOrdered(byChild: "code").queryEqual(toValue: friendCode).observeSingleEvent(of: .value) { snapshot in
             if let data = snapshot.value as? [String: [String: Any]], let friendData = data.values.first {
-                let friend = Friend(id: UUID(), name: friendData["name"] as? String ?? "", code: self.friendCode)
+                let friend = Friend(id: UUID(), name: friendData["name"] as? String ?? "", code: self.friendCode, score: friendData["score"] as? Int ?? 0)
                 self.friends.append(friend)
                 
                 if let user = Auth.auth().currentUser {
@@ -58,7 +70,7 @@ class ProfileViewModel: ObservableObject {
                     let userRef = ref.child(uid)
                     
                     // Append the new friend's data to the `users` node
-                    let friendDict = ["name": friend.name, "code": friend.code]
+                    let friendDict = ["name": friend.name, "code": friend.code, "score": friend.score]
                     userRef.child("friends").childByAutoId().setValue(friendDict)
                 }
             } else {
@@ -66,6 +78,25 @@ class ProfileViewModel: ObservableObject {
             }
         }
     }
+    
+    func score() {
+        let ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let newScore = self.updateScore + 10
+        ref.child("users").child(uid).child("score").setValue(newScore) { (error, ref) in
+            if let error = error {
+                print("Failed to update score: \(error.localizedDescription)")
+                return
+            }
+            
+            self.updateScore = newScore
+        }
+    }
+    
+    
 }
 
 

@@ -91,6 +91,7 @@ struct WorkoutDetailView: View {
                                 .foregroundColor(.black)
                         }
                     }
+                    .padding()
                     .background((Rectangle()
                         .fill(Color("GreenAssets"))
                         .frame(width: geometry.size.width * (0.9), height: geometry.size.height * 0.06)

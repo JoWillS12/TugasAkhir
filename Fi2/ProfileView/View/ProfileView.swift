@@ -45,7 +45,7 @@ struct ProfileView: View {
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                 
-                                Text("Score: 500")
+                                Text("Score : \(profile.updateScore)")
                                     .foregroundColor(.black)
                                     .font(.title2)
                                     .fontWeight(.bold)
@@ -103,22 +103,8 @@ struct ProfileView: View {
                                 }
                             }
                         } else if profile.selectedMenu == "Friend List" {
-                            ScrollView{
-                                VStack {
-                                    ForEach(profile.friends) { friend in
-                                        HStack {
-                                            Text(friend.name)
-                                                .font(.title)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                        }
-                                        .padding()
-                                        .frame(width: geometry.size.width * 0.9)
-                                        .background(Color("Item"))
-                                        .cornerRadius(15.0)
-                                    }                                }
-                            }
-                            
+                            FriendListView()
+                                .padding()
                         }
                         
                         Spacer() // Add some space here

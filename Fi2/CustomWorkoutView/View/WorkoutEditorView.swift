@@ -67,5 +67,6 @@ struct WorkoutEditorView: View {
                 Spacer()
             }
         }
+        .environment(\.colorScheme, .dark)
     }
 }
