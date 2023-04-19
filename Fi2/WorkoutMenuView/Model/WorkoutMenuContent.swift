@@ -6,12 +6,17 @@
 //
 
 import Foundation
-import Firebase
 
-struct SavedWorkout: Identifiable {
-    let id = UUID()
+struct SavedWorkout {
+    var id: UUID?
     var title: String
     let workouts: [CustomWorkout]
+
+    init(id: UUID? = nil, title: String, workouts: [CustomWorkout]) {
+        self.id = id
+        self.title = title
+        self.workouts = workouts
+    }
 
     func toAnyObject() -> Any {
         let workoutArray = workouts.map { $0.toAnyObject() }

@@ -109,7 +109,10 @@ final class CustomWorkoutViewModel: ObservableObject {
                                 let workoutData = try JSONSerialization.data(withJSONObject: data)
                                 return try self.decoder.decode(CustomWorkout.self, from: workoutData)
                             }
-                            let savedWorkout = SavedWorkout(title: title, workouts: workouts)
+                            var savedWorkout = SavedWorkout(title: title, workouts: workouts)
+                            if let id = UUID(uuidString: snapshot.key) {
+                                savedWorkout.id = id
+                            }
                             savedWorkouts.append(savedWorkout)
                         } catch {
                             print("Failed to decode saved workout", error)
@@ -123,6 +126,24 @@ final class CustomWorkoutViewModel: ObservableObject {
         }
     }
     
-    
+    func deleteSavedWorkout(_ workout: SavedWorkout) {
+        if let userId = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference(withPath: "savedWorkouts/\(userId)")
+            ref.queryOrdered(byChild: "title").queryEqual(toValue: workout.title).observeSingleEvent(of: .value) { snapshot in
+                for child in snapshot.children {
+                    let childSnapshot = child as! DataSnapshot
+                    let childKey = childSnapshot.key
+                    let childValue = childSnapshot.value as! [String: Any]
+                    let title = childValue["title"] as! String
+                    if title == workout.title {
+                        ref.child(childKey).removeValue()
+                    }
+                }
+                self.savedWorkouts.removeAll(where: { $0.title == workout.title })
+            }
+        }
+    }
+
+
     
 }

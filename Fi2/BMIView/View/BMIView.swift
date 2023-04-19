@@ -72,14 +72,14 @@ struct BMIView: View {
                         //                            .font(.title3)
                         //                            .fontWeight(.bold)
                     }
-                    
+                    Text("YOUR HISTORY")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Divider()
+                        .frame(height: geometry.size.height * 0.01)
                     ScrollView{
                         VStack{
-                            Text("YOUR HISTORY")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Divider()
-                                .frame(height: geometry.size.height * 0.01)
+                            
                             ForEach(BMI.BMIData, id:\.self){ BData in
                                 HStack{
                                     Text("Height: \(BData.height, specifier: "%.0f")")

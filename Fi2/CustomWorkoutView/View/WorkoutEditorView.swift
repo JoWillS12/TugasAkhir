@@ -24,7 +24,7 @@ struct WorkoutEditorView: View {
                     .padding(.top, 30)
                 TextField("Title", text: $custom.title)
                     .padding()
-                    .background(Color.white)
+                    .background(Color.black)
                     .cornerRadius(10)
                     .shadow(radius: 5)
                     .padding(.horizontal, 20)

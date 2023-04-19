@@ -49,10 +49,23 @@ struct WorkoutMenuView: View {
                                 
                                 ForEach(custom.savedWorkouts, id: \.title) { savedWorkout in
                                     NavigationLink(destination: WorkoutDetailView(detail: WorkoutDetailViewModel(savedWorkout: savedWorkout))) {
-                                        Text(savedWorkout.title)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(.white)
+                                        HStack {
+                                            Text(savedWorkout.title)
+                                                .font(.title)
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                                .padding()
+                                            
+                                            Spacer()
+                                            
+                                            Button(action: {
+                                                custom.deleteSavedWorkout(savedWorkout)
+                                            }) {
+                                                Image(systemName: "trash")
+                                                    .foregroundColor(.red)
+                                            }
+                                            .padding()
+                                        }
                                     }
                                     .frame(width: geometry.size.width * 0.96, height: geometry.size.height * 0.14)
                                     .background(
@@ -62,6 +75,7 @@ struct WorkoutMenuView: View {
                                             .clipShape(RoundedRectangle(cornerRadius: 25))
                                         
                                     )
+                                    
                                 }
                                 
                             }
