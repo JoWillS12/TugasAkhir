@@ -5,18 +5,27 @@
 //  Created by Joseph William Santoso on 29/03/23.
 //
 
-import Foundation
+import SwiftUI
+import WebKit
 
-enum URLType {
-    case name(String)
-    case url(URL)
+struct GifImage: UIViewRepresentable {
+    private let url: URL
     
-    var url: URL? {
-        switch self {
-        case .name(let name):
-            return Bundle.main.url(forResource: name, withExtension: "gif")
-        case .url(let remoteURL):
-            return remoteURL
-        }
+    init(url: URL) {
+        self.url = url
+    }
+    
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.load(URLRequest(url: url))
+        webView.scrollView.isScrollEnabled = false
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.reload()
     }
 }
+
+
+

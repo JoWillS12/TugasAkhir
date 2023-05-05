@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct WorkoutStartView: View {
     @StateObject var viewModel: WorkoutStartViewModel
@@ -29,27 +30,12 @@ struct WorkoutStartView: View {
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
                     
-                    AsyncImage(url: URL(string: viewModel.workouts[viewModel.currentIndex].image)) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image.resizable()
-                                .scaledToFit()
-                                .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.6)
-                                .cornerRadius(15)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.black, lineWidth: 2)
-                                )
-                        case .failure:
-                            Color.gray
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.6)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
+                    WebImage(url: URL(string:viewModel.workouts[viewModel.currentIndex].image))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.6)
+                        .animation(.default)
+                    
                     
                     Text(viewModel.workouts[viewModel.currentIndex].name)
                         .font(.title)

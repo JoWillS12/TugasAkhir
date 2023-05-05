@@ -11,6 +11,8 @@
 		177D75EC29EB059600CDEB83 /* BMIDataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EB29EB059600CDEB83 /* BMIDataContent.swift */; };
 		177D75EF29EB166800CDEB83 /* FriendsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EE29EB166800CDEB83 /* FriendsContent.swift */; };
 		177D75F229ED1A2900CDEB83 /* FriendListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75F129ED1A2900CDEB83 /* FriendListView.swift */; };
+		177D75F52A04F0A000CDEB83 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 177D75F42A04F0A000CDEB83 /* SDWebImageSwiftUI */; };
+		177D75F72A04F64D00CDEB83 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75F62A04F64D00CDEB83 /* ImageLoader.swift */; };
 		17DE288229B1C6EB00F5C186 /* Fi2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288129B1C6EB00F5C186 /* Fi2App.swift */; };
 		17DE288429B1C6EB00F5C186 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE288329B1C6EB00F5C186 /* ContentView.swift */; };
 		17DE288629B1C6EC00F5C186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DE288529B1C6EC00F5C186 /* Assets.xcassets */; };
@@ -52,7 +54,6 @@
 		17FAD89529D43C500035AF33 /* WorkoutTestEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89429D43C500035AF33 /* WorkoutTestEditorView.swift */; };
 		17FAD89829D455CE0035AF33 /* WorkoutDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89729D455CE0035AF33 /* WorkoutDataView.swift */; };
 		17FAD89A29D457F30035AF33 /* DataTitleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89929D457F30035AF33 /* DataTitleContent.swift */; };
-		17FAD89C29D461170035AF33 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD89B29D461170035AF33 /* GifImage.swift */; };
 		17FAD89F29D463560035AF33 /* FLAnimatedImage in Frameworks */ = {isa = PBXBuildFile; productRef = 17FAD89E29D463560035AF33 /* FLAnimatedImage */; };
 		17FAD8A129D469310035AF33 /* GifImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD8A029D469310035AF33 /* GifImageContent.swift */; };
 		17FAD8A429D731B20035AF33 /* WorkoutMenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FAD8A329D731B20035AF33 /* WorkoutMenuContent.swift */; };
@@ -80,6 +81,8 @@
 		177D75EB29EB059600CDEB83 /* BMIDataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIDataContent.swift; sourceTree = "<group>"; };
 		177D75EE29EB166800CDEB83 /* FriendsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContent.swift; sourceTree = "<group>"; };
 		177D75F129ED1A2900CDEB83 /* FriendListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListView.swift; sourceTree = "<group>"; };
+		177D75F62A04F64D00CDEB83 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		177D75F82A05025B00CDEB83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		17DE287E29B1C6EB00F5C186 /* Fi2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fi2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DE288129B1C6EB00F5C186 /* Fi2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fi2App.swift; sourceTree = "<group>"; };
 		17DE288329B1C6EB00F5C186 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,7 +120,6 @@
 		17FAD89429D43C500035AF33 /* WorkoutTestEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTestEditorView.swift; sourceTree = "<group>"; };
 		17FAD89729D455CE0035AF33 /* WorkoutDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDataView.swift; sourceTree = "<group>"; };
 		17FAD89929D457F30035AF33 /* DataTitleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTitleContent.swift; sourceTree = "<group>"; };
-		17FAD89B29D461170035AF33 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		17FAD8A029D469310035AF33 /* GifImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImageContent.swift; sourceTree = "<group>"; };
 		17FAD8A329D731B20035AF33 /* WorkoutMenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMenuContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				17FAD89129D43A9C0035AF33 /* FirebaseDatabaseSwift in Frameworks */,
 				17FAD88F29D43A970035AF33 /* FirebaseDatabase in Frameworks */,
 				17FAD88829D2F9270035AF33 /* FirebaseFirestoreSwift in Frameworks */,
+				177D75F52A04F0A000CDEB83 /* SDWebImageSwiftUI in Frameworks */,
 				17DE28B129B1C9F500F5C186 /* FirebaseAnalyticsSwift in Frameworks */,
 				17FAD88629D2F9200035AF33 /* FirebaseFirestore in Frameworks */,
 				17DE28B729B1CD0D00F5C186 /* FirebaseAuth in Frameworks */,
@@ -203,6 +206,7 @@
 		17DE288029B1C6EB00F5C186 /* Fi2 */ = {
 			isa = PBXGroup;
 			children = (
+				177D75F82A05025B00CDEB83 /* Info.plist */,
 				17FAD88929D439FC0035AF33 /* FirebaseTest */,
 				17FAD88229D202420035AF33 /* Extension */,
 				17FAD87829C757C30035AF33 /* WorkoutStartView */,
@@ -428,8 +432,8 @@
 			isa = PBXGroup;
 			children = (
 				17FAD88329D2025E0035AF33 /* KeypadExtension.swift */,
-				17FAD89B29D461170035AF33 /* GifImage.swift */,
 				17FAD8A029D469310035AF33 /* GifImageContent.swift */,
+				177D75F62A04F64D00CDEB83 /* ImageLoader.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -486,6 +490,7 @@
 				17FAD88E29D43A970035AF33 /* FirebaseDatabase */,
 				17FAD89029D43A9C0035AF33 /* FirebaseDatabaseSwift */,
 				17FAD89E29D463560035AF33 /* FLAnimatedImage */,
+				177D75F42A04F0A000CDEB83 /* SDWebImageSwiftUI */,
 			);
 			productName = Fi2;
 			productReference = 17DE287E29B1C6EB00F5C186 /* Fi2.app */;
@@ -562,6 +567,7 @@
 			packageReferences = (
 				17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				17FAD89D29D463560035AF33 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
+				177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 17DE287F29B1C6EB00F5C186 /* Products */;
 			projectDirPath = "";
@@ -619,7 +625,7 @@
 				17FAD87D29CAEDD30035AF33 /* WorkoutDetailViewModel.swift in Sources */,
 				17FAD86C29C601B30035AF33 /* EditProfileViewModel.swift in Sources */,
 				174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */,
-				17FAD89C29D461170035AF33 /* GifImage.swift in Sources */,
+				177D75F72A04F64D00CDEB83 /* ImageLoader.swift in Sources */,
 				17FAD88129D1EB500035AF33 /* ResultPopUpView.swift in Sources */,
 				177D75EF29EB166800CDEB83 /* FriendsContent.swift in Sources */,
 				17DE28B429B1CBFD00F5C186 /* LoginView.swift in Sources */,
@@ -802,6 +808,7 @@
 				DEVELOPMENT_TEAM = D98G8X42P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fi2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -831,6 +838,7 @@
 				DEVELOPMENT_TEAM = D98G8X42P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fi2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -967,6 +975,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -986,6 +1002,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		177D75F42A04F0A000CDEB83 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		17DE28AE29B1C9F500F5C186 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

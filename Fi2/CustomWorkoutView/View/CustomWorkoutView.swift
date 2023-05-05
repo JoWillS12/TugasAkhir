@@ -78,7 +78,7 @@ struct CustomWorkoutView: View {
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(.green)
+                            .foregroundColor(.white)
                             .font(.title)
                     }
                 )

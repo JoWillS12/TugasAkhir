@@ -6,6 +6,7 @@
 ////
 //
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct WorkoutDetailView: View {
     @StateObject var detail: WorkoutDetailViewModel
@@ -32,26 +33,11 @@ struct WorkoutDetailView: View {
                         VStack {
                             ForEach(detail.savedWorkout.workouts) { workout in
                                 HStack {
-                                    AsyncImage(url: URL(string: workout.image)) { phase in
-                                        switch phase {
-                                        case .empty:
-                                            ProgressView()
-                                        case .success(let image):
-                                            image.resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: 10)
-                                                        .stroke(Color.black, lineWidth: 2))
-                                        case .failure:
-                                            Color.gray
-                                                .clipShape(Circle())
-                                                .shadow(radius: 2)
-                                                .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
-                                        @unknown default:
-                                            EmptyView()
-                                        }
-                                    }
+                                    WebImage(url: URL(string: workout.image))
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
+                                        .animation(.default)
                                     Spacer()
                                         .frame(width: geometry.size.width * 0.1)
                                     
