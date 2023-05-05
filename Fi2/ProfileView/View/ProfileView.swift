@@ -28,7 +28,7 @@ struct ProfileView: View {
                     
                     VStack {
                         HStack{
-                            Image("myImage")
+                            Image("bicep")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: geometry.size.width * 0.4, height: geometry.size.width * 0.4)
@@ -40,7 +40,7 @@ struct ProfileView: View {
                             Spacer()
                                 .frame(width: geometry.size.width * 0.13)
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(edit.name)
+                                Text(edit.savedName.isEmpty ? edit.name : edit.savedName)
                                     .foregroundColor(.black)
                                     .font(.largeTitle)
                                     .fontWeight(.bold)

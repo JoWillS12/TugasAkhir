@@ -16,6 +16,7 @@ class EditProfileViewModel: ObservableObject {
     @Published var uCode = ""
     @Published var showButton: Bool = true
     @Published var codeGenerated: Bool = false
+    @Published var savedName: String = ""
     
     init() {
         // Retrieve the saved data from the database on initialization
@@ -43,6 +44,7 @@ class EditProfileViewModel: ObservableObject {
                 print("Error updating profile: \(error.localizedDescription)")
             } else {
                 print("Profile updated successfully")
+                self.savedName = self.name
             }
         }
     }

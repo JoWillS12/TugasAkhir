@@ -84,17 +84,20 @@ class ProfileViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
-        
+
         let newScore = self.updateScore + 10
         ref.child("users").child(uid).child("score").setValue(newScore) { (error, ref) in
             if let error = error {
                 print("Failed to update score: \(error.localizedDescription)")
                 return
             }
-            
-            self.updateScore = newScore
+
+            DispatchQueue.main.async {
+                self.updateScore = newScore // update score in UI
+            }
         }
     }
+
     
     
 }
