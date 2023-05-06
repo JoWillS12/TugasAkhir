@@ -18,6 +18,7 @@ class ProfileViewModel: ObservableObject {
     @Published var menu = ["Add Friend", "Friend List"]
     @Published var friends: [Friend] = []
     @Published var updateScore = 0
+    @Published var userName = ""
     
     
     let email = UserDefaults.standard.string(forKey: "email") ?? ""
@@ -84,20 +85,36 @@ class ProfileViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
-
+        
         let newScore = self.updateScore + 10
         ref.child("users").child(uid).child("score").setValue(newScore) { (error, ref) in
             if let error = error {
                 print("Failed to update score: \(error.localizedDescription)")
                 return
             }
-
+            
             DispatchQueue.main.async {
                 self.updateScore = newScore // update score in UI
             }
         }
     }
-
+    
+    func observeUserName() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let ref = Database.database().reference().child("users").child(uid).child("name")
+        
+        ref.observe(.value) { snapshot in
+            if let name = snapshot.value as? String {
+                DispatchQueue.main.async {
+                    self.userName = name
+                }
+            }
+        }
+    }
+    
     
     
 }

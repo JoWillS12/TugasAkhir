@@ -39,12 +39,15 @@ class EditProfileViewModel: ObservableObject {
         // Save changes to the database
         let ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid
+        let updateName = self.name
         ref.child("users").child(uid!).updateChildValues(["name": name, "age": age, "gender": gender, "code": uCode]) { error, ref in
             if let error = error {
                 print("Error updating profile: \(error.localizedDescription)")
             } else {
                 print("Profile updated successfully")
-                self.savedName = self.name
+            }
+            DispatchQueue.main.async {
+                self.savedName = updateName // update score in UI
             }
         }
     }

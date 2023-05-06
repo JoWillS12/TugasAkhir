@@ -40,11 +40,13 @@ struct ProfileView: View {
                             Spacer()
                                 .frame(width: geometry.size.width * 0.13)
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(edit.savedName.isEmpty ? edit.name : edit.savedName)
+                                Text(profile.userName)
                                     .foregroundColor(.black)
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
-                                
+                                    .onAppear {
+                                        profile.observeUserName()
+                                            }
                                 Text("Score : \(profile.updateScore)")
                                     .foregroundColor(.black)
                                     .font(.title2)
