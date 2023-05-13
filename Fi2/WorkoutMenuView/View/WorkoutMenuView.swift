@@ -12,6 +12,8 @@ struct WorkoutMenuView: View {
     @ObservedObject var login = LoginViewModel()
     @ObservedObject var custom = CustomWorkoutViewModel()
     
+    
+   
     var body: some View {
         NavigationView {
             GeometryReader{ geometry in
@@ -78,9 +80,10 @@ struct WorkoutMenuView: View {
                                     
                                 }
                                 
+                                
                             }
                         }
-                        
+                        .padding()
                     }
                 }
                 .background(Color("Background"))

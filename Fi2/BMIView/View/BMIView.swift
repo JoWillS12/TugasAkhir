@@ -28,8 +28,6 @@ struct BMIView: View {
                     
                     Group{
                         
-                        
-                        
                         TextField("Your Height", value: $BMI.height, formatter: NumberFormatter())
                             .textFieldStyle(.roundedBorder)
                             .padding()
@@ -60,6 +58,7 @@ struct BMIView: View {
                                     .foregroundColor(.black)
                             }
                         })
+                        .disabled(BMI.height == nil || BMI.weight == nil || BMI.height == 0 || BMI.weight == 0)
                         .background((Rectangle()
                             .fill(Color("GreenAssets"))
                             .frame(width: geometry.size.width * (0.9), height: geometry.size.height * 0.06)
