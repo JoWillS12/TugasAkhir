@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173658A72A234F0D00E316E8 /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173658A62A234F0D00E316E8 /* AVKit.swift */; };
+		173658AA2A24A07100E316E8 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 173658A92A24A07100E316E8 /* YouTubePlayerKit */; };
 		174C032F29E41043004D53A9 /* WorkoutStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */; };
 		177D75EC29EB059600CDEB83 /* BMIDataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EB29EB059600CDEB83 /* BMIDataContent.swift */; };
 		177D75EF29EB166800CDEB83 /* FriendsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177D75EE29EB166800CDEB83 /* FriendsContent.swift */; };
@@ -77,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		173658A62A234F0D00E316E8 /* AVKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		174C032E29E41043004D53A9 /* WorkoutStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStartViewModel.swift; sourceTree = "<group>"; };
 		177D75EB29EB059600CDEB83 /* BMIDataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIDataContent.swift; sourceTree = "<group>"; };
 		177D75EE29EB166800CDEB83 /* FriendsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContent.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 			files = (
 				17FAD89129D43A9C0035AF33 /* FirebaseDatabaseSwift in Frameworks */,
 				17FAD88F29D43A970035AF33 /* FirebaseDatabase in Frameworks */,
+				173658AA2A24A07100E316E8 /* YouTubePlayerKit in Frameworks */,
 				17FAD88829D2F9270035AF33 /* FirebaseFirestoreSwift in Frameworks */,
 				177D75F52A04F0A000CDEB83 /* SDWebImageSwiftUI in Frameworks */,
 				17DE28B129B1C9F500F5C186 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -434,6 +438,7 @@
 				17FAD88329D2025E0035AF33 /* KeypadExtension.swift */,
 				17FAD8A029D469310035AF33 /* GifImageContent.swift */,
 				177D75F62A04F64D00CDEB83 /* ImageLoader.swift */,
+				173658A62A234F0D00E316E8 /* AVKit.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				17FAD89029D43A9C0035AF33 /* FirebaseDatabaseSwift */,
 				17FAD89E29D463560035AF33 /* FLAnimatedImage */,
 				177D75F42A04F0A000CDEB83 /* SDWebImageSwiftUI */,
+				173658A92A24A07100E316E8 /* YouTubePlayerKit */,
 			);
 			productName = Fi2;
 			productReference = 17DE287E29B1C6EB00F5C186 /* Fi2.app */;
@@ -568,6 +574,7 @@
 				17DE28AD29B1C9F500F5C186 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				17FAD89D29D463560035AF33 /* XCRemoteSwiftPackageReference "FLAnimatedImage" */,
 				177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				173658A82A24A07100E316E8 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = 17DE287F29B1C6EB00F5C186 /* Products */;
 			projectDirPath = "";
@@ -645,6 +652,7 @@
 				17FAD88B29D43A220035AF33 /* WorkoutTestContent.swift in Sources */,
 				17FAD86229BF05B20035AF33 /* ProfileView.swift in Sources */,
 				17FAD88429D2025E0035AF33 /* KeypadExtension.swift in Sources */,
+				173658A72A234F0D00E316E8 /* AVKit.swift in Sources */,
 				17DE28D329B5C92900F5C186 /* CustomWorkoutView.swift in Sources */,
 				17FAD87329C752CE0035AF33 /* WorkoutEditorView.swift in Sources */,
 			);
@@ -975,6 +983,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		173658A82A24A07100E316E8 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -1002,6 +1018,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		173658A92A24A07100E316E8 /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 173658A82A24A07100E316E8 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
+		};
 		177D75F42A04F0A000CDEB83 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 177D75F32A04F0A000CDEB83 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

@@ -17,6 +17,7 @@ class EditProfileViewModel: ObservableObject {
     @Published var showButton: Bool = true
     @Published var codeGenerated: Bool = false
     @Published var savedName: String = ""
+    @Published var saveStatus: String = ""
     
     init() {
         // Retrieve the saved data from the database on initialization
@@ -41,15 +42,19 @@ class EditProfileViewModel: ObservableObject {
         let uid = Auth.auth().currentUser?.uid
         let updateName = self.name
         ref.child("users").child(uid!).updateChildValues(["name": name, "age": age, "gender": gender, "code": uCode]) { error, ref in
-            if let error = error {
-                print("Error updating profile: \(error.localizedDescription)")
-            } else {
-                print("Profile updated successfully")
+                if let error = error {
+                    print("Error updating profile: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self.saveStatus = "Save failed: \(error.localizedDescription)"
+                    }
+                } else {
+                    print("Profile updated successfully")
+                    DispatchQueue.main.async {
+                        self.saveStatus = "Save successful"
+                        self.savedName = updateName // update score in UI
+                    }
+                }
             }
-            DispatchQueue.main.async {
-                self.savedName = updateName // update score in UI
-            }
-        }
     }
     
     func generateUniqueCode() -> String {

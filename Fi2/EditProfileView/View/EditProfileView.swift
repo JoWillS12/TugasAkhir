@@ -85,6 +85,9 @@ struct EditProfileView: View {
                             .cornerRadius(10)
                     })
                     .frame(width: geometry.size.width * 0.6)
+                    
+                    Text(edit.saveStatus)
+                        .foregroundColor(edit.saveStatus.contains("failed") ? .red : .green)
                 }
             }
             

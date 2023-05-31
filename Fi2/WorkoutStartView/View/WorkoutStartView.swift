@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import AVKit
 
 struct WorkoutStartView: View {
     @StateObject var viewModel: WorkoutStartViewModel
@@ -30,11 +31,17 @@ struct WorkoutStartView: View {
                     Spacer()
                         .frame(height: geometry.size.height * 0.1)
                     
-                    WebImage(url: URL(string:viewModel.workouts[viewModel.currentIndex].image))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.6)
-                        .animation(.default)
+                    ZStack{
+                        AVPlayerView(videoURL: URL(string: viewModel.workouts[viewModel.currentIndex].image)!)
+                            .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.6)
+                            .cornerRadius(10)
+//                        WebImage(url: URL(string:viewModel.workouts[viewModel.currentIndex].image))
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: geometry.size.width * 0.6, height: geometry.size.width * 0.6)
+//                            .animation(.default)
+                        
+                    }
                     
                     
                     Text(viewModel.workouts[viewModel.currentIndex].name)

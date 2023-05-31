@@ -8,6 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
 struct WorkoutDetailView: View {
     @StateObject var detail: WorkoutDetailViewModel
     @State var showingWorkoutStart = false
@@ -33,11 +34,12 @@ struct WorkoutDetailView: View {
                         VStack {
                             ForEach(detail.savedWorkout.workouts) { workout in
                                 HStack {
-                                    WebImage(url: URL(string: workout.image))
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
-                                        .animation(.default)
+                                        WebImage(url: URL(string: workout.image))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
+                                            .animation(.default)
+                                    
                                     Spacer()
                                         .frame(width: geometry.size.width * 0.1)
                                     
